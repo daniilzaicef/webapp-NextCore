@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ProjectModel>
+
+<h2>Проекты</h2>
+
+<a asp-action="CreateProject" class="btn btn-success mb-3">Добавить проект</a>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Технологии</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>@item.Technologies</td>
+                <td>
+                    <a asp-action="EditProject" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Изменить</a>
+                    <a asp-action="DeleteProject" asp-route-id="@item.Id"
+                       onclick="return confirm('Удалить проект?')"
+                       class="btn btn-danger btn-sm">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

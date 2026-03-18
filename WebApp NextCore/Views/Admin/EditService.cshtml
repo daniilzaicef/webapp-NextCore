@@ -1,0 +1,21 @@
+﻿@model ServiceModel
+
+<h2>Редактировать услугу</h2>
+
+<form asp-action="EditService" method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label>Название</label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Описание</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+
+    <button class="btn btn-primary">Сохранить</button>
+
+</form>

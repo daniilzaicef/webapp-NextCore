@@ -1,0 +1,31 @@
+﻿@using WebApp_NextCore.ViewModel
+@model VacancyResponseViewModel
+
+<h2 class="mb-3">Отклик на вакансию: <span class="text-primary">@Model.VacancyTitle</span></h2>
+
+<div class="card shadow p-4">
+    <form asp-action="Apply" method="post">
+
+        <input type="hidden" asp-for="VacancyTitle" />
+
+        <div class="mb-3">
+            <label class="form-label">ФИО</label>
+            <input asp-for="FullName" class="form-control" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Сообщение</label>
+            <textarea asp-for="Message" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Message" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Отправить отклик</button>
+    </form>
+</div>

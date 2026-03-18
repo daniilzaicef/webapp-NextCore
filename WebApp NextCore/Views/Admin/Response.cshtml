@@ -1,0 +1,35 @@
+﻿@model IEnumerable<VacancyResponse>
+
+<h2>Отклики на вакансии</h2>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ФИО</th>
+            <th>Email</th>
+            <th>Вакансия</th>
+            <th>Сообщение</th>
+            <th>Дата</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FullName</td>
+                <td>@item.Email</td>
+                <td>@item.VacancyTitle</td>
+                <td>@item.Message</td>
+                <td>@item.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>
+                    <a asp-action="DeleteResponse" asp-route-id="@item.id"
+                       onclick="return confirm('Удалить этот отклик?')"
+                       class="btn btn-danger btn-sm">
+                        Удалить
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

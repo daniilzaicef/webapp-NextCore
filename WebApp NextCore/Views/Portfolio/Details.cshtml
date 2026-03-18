@@ -1,0 +1,15 @@
+﻿@model ProjectModel
+
+<h2 class="mb-3">@Model.Title</h2>
+
+<div class="card shadow p-4">
+    <p><strong>Описание:</strong></p>
+    <p>@Model.Description</p>
+
+    <p><strong>Технологии:</strong></p>
+    <p>@Model.Technologies</p>
+
+    <p><strong>Дата создания:</strong> @Model.CreatedAt.ToString("dd.MM.yyyy")</p>
+
+    <a asp-action="Index" class="btn btn-secondary mt-3">Назад к проектам</a>
+</div>

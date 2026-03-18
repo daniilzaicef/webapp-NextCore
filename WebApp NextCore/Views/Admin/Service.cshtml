@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ServiceModel>
+
+<h2>Услуги</h2>
+
+<a asp-action="CreateService" class="btn btn-success mb-3">
+    Добавить услугу
+</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Описание</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Title</td>
+                <td>@s.Description</td>
+                <td>
+                    <a asp-action="EditService"
+                       asp-route-id="@s.Id"
+                       class="btn btn-warning btn-sm">
+                        Изменить
+                    </a>
+
+                    <a asp-action="DeleteService"
+                       asp-route-id="@s.Id"
+                       class="btn btn-danger btn-sm"
+                       onclick="return confirm('Удалить услугу?')">
+                        Удалить
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,117 @@
+﻿@{
+    ViewData["Title"] = "Главная";
+}
+
+<section class="bg-dark text-light p-5 rounded-3 shadow mb-5">
+    <div class="container text-center">
+        <h1 class="display-5 fw-bold">NexusCore Solution</h1>
+        <p class="lead mt-3">
+            Инновационные IT-решения для вашего бизнеса
+        </p>
+        <a asp-controller="Home" asp-action="Contact" class="btn btn-warning btn-lg mt-3">
+            Обсудить проект
+        </a>
+    </div>
+</section>
+
+<!-- О компании -->
+<section class="mb-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h2>О компании</h2>
+            <p>
+                NexusCore Solution — IT-компания, специализирующаяся на интеграционных сервисах,
+                аутсорсинге и технической поддержке.
+                Мы помогаем бизнесу внедрять современные цифровые решения.
+            </p>
+            <ul>
+                <li>✔ 10+ лет опыта</li>
+                <li>✔ Сертифицированные специалисты</li>
+                <li>✔ Индивидуальный подход</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Услуги -->
+<section class="mb-5">
+    <h2 class="text-center mb-4">Наши услуги</h2>
+    <div class="row text-center">
+
+        <div class="col-md-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <i class="bi bi-diagram-3 display-4 text-primary"></i>
+                    <h5 class="card-title mt-3">Интеграционные сервисы</h5>
+                    <p class="card-text">
+                        Разработка API, интеграция CRM/ERP и микросервисная архитектура.
+                    </p>
+                    <a asp-controller="Service" asp-action="Index" class="btn btn-outline-primary">
+                        Подробнее
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <i class="bi bi-people display-4 text-success"></i>
+                    <h5 class="card-title mt-3">Аутсорсинг и консалтинг</h5>
+                    <p class="card-text">
+                        Подбор IT-команд, аудит инфраструктуры, стратегическое планирование.
+                    </p>
+                    <a asp-controller="Service" asp-action="Index" class="btn btn-outline-success">
+                        Подробнее
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <i class="bi bi-headset display-4 text-danger"></i>
+                    <h5 class="card-title mt-3">Техническая поддержка</h5>
+                    <p class="card-text">
+                        Service Desk, мониторинг и профилактика IT-систем.
+                    </p>
+                    <a asp-controller="Service" asp-action="Index" class="btn btn-outline-danger">
+                        Подробнее
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Статистика -->
+<section class="bg-light p-4 rounded shadow mb-5">
+    <div class="row text-center">
+        <div class="col-md-3">
+            <h2>150+</h2>
+            <p>Проектов выполнено</p>
+        </div>
+        <div class="col-md-3">
+            <h2>50+</h2>
+            <p>Постоянных клиентов</p>
+        </div>
+        <div class="col-md-3">
+            <h2>20</h2>
+            <p>Специалистов</p>
+        </div>
+        <div class="col-md-3">
+            <h2>24/7</h2>
+            <p>Поддержка</p>
+        </div>
+    </div>
+</section>
+
+<section class="text-center p-5 bg-primary text-light rounded shadow mb-5">
+    <h2>Готовы начать проект?</h2>
+    <p class="lead">Свяжитесь с нами для бесплатной консультации</p>
+    <a asp-controller="Home" asp-action="Contacts" class="btn btn-light btn-lg">
+        Получить консультацию
+    </a>
+</section>

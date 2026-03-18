@@ -1,0 +1,9 @@
+﻿@model VacancyModel
+
+<form asp-action="Edit" method="post">
+    <input asp-for="Id" type="hidden" />
+    <input asp-for="Title" class="form-control" />
+    <textarea asp-for="Description" class="form-control"></textarea>
+    <textarea asp-for="Requirements" class="form-control"></textarea>
+    <button type="submit">Сохранить</button>
+</form>

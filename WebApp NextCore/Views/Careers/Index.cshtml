@@ -1,0 +1,25 @@
+﻿@model IEnumerable<VacancyModel>
+
+<h2 class="mb-4 text-center">Актуальные вакансии</h2>
+
+<div class="row">
+    @foreach (var v in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">@v.Title</h5>
+                    <p class="card-text">@v.Description</p>
+                    <p class="card-text">@v.Requirements</p>
+
+                    <div class="mt-auto">
+                        <a asp-action="Apply" asp-route-id="@v.Id"
+                           class="btn btn-primary w-100">
+                            Откликнуться
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

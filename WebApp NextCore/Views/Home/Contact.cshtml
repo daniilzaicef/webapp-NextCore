@@ -1,0 +1,39 @@
+﻿@model WebApp_NextCore.Models.FeedbackMessage
+@{
+    ViewData["Title"] = "Контакты";
+}
+
+<h2>Свяжитесь с нами</h2>
+<p>Оставьте сообщение, и мы свяжемся с вами в ближайшее время.</p>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+<form asp-action="Contact" method="post">
+    <div class="mb-3">
+        <label asp-for="SenderName" class="form-label">ФИО</label>
+        <input asp-for="SenderName" class="form-control" />
+        <span asp-validation-for="SenderName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Электронная почта</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Message" class="form-label">Сообщение</label>
+        <textarea asp-for="Message" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="Message" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Отправить</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

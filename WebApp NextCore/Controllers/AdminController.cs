@@ -1,0 +1,212 @@
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using WebApp_NextCore.Data;
+using WebApp_NextCore.Models;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace WebApp_NextCore.Controllers
+{
+    [Authorize(Roles = "Admin")]
+    public class AdminController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public AdminController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public IActionResult Index()
+        {
+            var vacancies = _context.Vacancy;
+            return View(vacancies);
+        }
+
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(VacancyModel vacancy)
+        {
+            if(ModelState.IsValid)
+            {
+                _context.Vacancy.Add(vacancy);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(vacancy);
+        }
+
+        //Редактирование списка услуг.
+        public IActionResult Edit(int id)
+        {
+            var vacancy = _context.Vacancy.Find(id);
+            return View(vacancy);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(VacancyModel vacancy)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Vacancy.Update(vacancy);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(vacancy);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var vacancy = _context.Vacancy.Find(id);
+            _context.Vacancy.Remove(vacancy);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        [Authorize(Roles ="Admin")]
+        public IActionResult Response()
+        {
+            var responses = _context.VacancyResponses
+                .OrderByDescending(r => r.CreatedAt)
+                .ToList();
+
+            return View(responses);
+        }
+
+        [Authorize(Roles ="Admin")]
+        public IActionResult DeleteResponse(int id)
+        {
+            var response = _context.VacancyResponses.Find(id);
+            if (response == null) return NotFound();
+
+            _context.VacancyResponses.Remove(response);
+            _context.SaveChanges();
+
+            return RedirectToAction("Response");
+        }
+
+        [Authorize(Roles ="Admin")]
+        public IActionResult Projects()
+        {
+            var projects = _context.Projects.ToList();
+            return View(projects);
+        }
+
+        [Authorize(Roles ="Admin")]
+        public IActionResult CreateProject()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles ="Admin")]
+        public IActionResult CreateProject(ProjectModel project)
+        {
+            if(ModelState.IsValid)
+            {
+                _context.Projects.Add(project);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Projects));
+            }
+            return View(project);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult EditProject(int id)
+        {
+            var project = _context.Projects.Find(id);
+            return View(project);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult EditProject(ProjectModel project)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Projects.Update(project);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Projects));
+            }
+            return View(project);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult DeleteProject(int id)
+        {
+            var project = _context.Projects.Find(id);
+            _context.Projects.Remove(project);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Projects));
+        }
+
+        [Authorize(Roles ="Admin")]
+        public IActionResult Service()
+        {
+            var services = _context.Services;
+            return View(services);
+        }
+
+        [Authorize(Roles ="Admin")]
+        public IActionResult CreateService()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles ="Admin")]
+        public IActionResult CreateService(ServiceModel service)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Services.Add(service);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Service));
+            }
+
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult EditService(int id)
+        {
+            var service = _context.Services.Find(id);
+            return View(service);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult EditService(ServiceModel service)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Services.Update(service);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Service));
+            }
+
+            return View(service);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult DeleteService(int id)
+        {
+            var service = _context.Services.Find(id);
+
+            if (service != null)
+            {
+                _context.Services.Remove(service);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(Service));
+        }
+    }
+}
