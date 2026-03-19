@@ -254,7 +254,7 @@ namespace WebApp_NextCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Articles");
+                    b.ToTable("Articles", (string)null);
                 });
 
             modelBuilder.Entity("WebApp_NextCore.Models.BlogPost", b =>
