@@ -12,8 +12,8 @@ using WebApp_NextCore.Data;
 namespace WebApp_NextCore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260222170803_AddServices")]
-    partial class AddServices
+    [Migration("20260318133116_AddProjects")]
+    partial class AddProjects
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -260,6 +260,34 @@ namespace WebApp_NextCore.Migrations
                     b.ToTable("Articles");
                 });
 
+            modelBuilder.Entity("WebApp_NextCore.Models.BlogPost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ShortDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlogPosts");
+                });
+
             modelBuilder.Entity("WebApp_NextCore.Models.FeedbackMessage", b =>
                 {
                     b.Property<int>("Id")
@@ -337,11 +365,6 @@ namespace WebApp_NextCore.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShortDescription")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Title")
                         .IsRequired()

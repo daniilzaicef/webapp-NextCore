@@ -12,7 +12,7 @@ using WebApp_NextCore.Data;
 namespace WebApp_NextCore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260308163726_AddBlogPosts")]
+    [Migration("20260319102620_AddBlogPosts")]
     partial class AddBlogPosts
     {
         /// <inheritdoc />

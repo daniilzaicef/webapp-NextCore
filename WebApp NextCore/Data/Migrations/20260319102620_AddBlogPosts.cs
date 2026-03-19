@@ -11,10 +11,6 @@ namespace WebApp_NextCore.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "ShortDescription",
-                table: "Services");
-
             migrationBuilder.CreateTable(
                 name: "BlogPosts",
                 columns: table => new
@@ -37,14 +33,6 @@ namespace WebApp_NextCore.Migrations
         {
             migrationBuilder.DropTable(
                 name: "BlogPosts");
-
-            migrationBuilder.AddColumn<string>(
-                name: "ShortDescription",
-                table: "Services",
-                type: "nvarchar(500)",
-                maxLength: 500,
-                nullable: false,
-                defaultValue: "");
         }
     }
 }

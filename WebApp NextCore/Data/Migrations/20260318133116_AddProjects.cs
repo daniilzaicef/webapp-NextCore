@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -10,6 +11,15 @@ namespace WebApp_NextCore.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.Sql(@"
+    IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS 
+               WHERE TABLE_NAME = 'Services' 
+               AND COLUMN_NAME = 'ShortDescription')
+    BEGIN
+        ALTER TABLE [Services] DROP COLUMN [ShortDescription];
+    END
+");
+
             migrationBuilder.DropColumn(
                 name: "Result",
                 table: "Projects");
@@ -27,6 +37,16 @@ namespace WebApp_NextCore.Migrations
                 name: "CompletionDate",
                 table: "Projects",
                 newName: "CreatedAt");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Title",
+                table: "Projects",
+                type: "nvarchar(max)",
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(150)",
+                oldMaxLength: 150);
+
         }
 
         /// <inheritdoc />
@@ -41,6 +61,15 @@ namespace WebApp_NextCore.Migrations
                 name: "CreatedAt",
                 table: "Projects",
                 newName: "CompletionDate");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Title",
+                table: "Projects",
+                type: "nvarchar(150)",
+                maxLength: 150,
+                nullable: false,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
 
             migrationBuilder.AddColumn<string>(
                 name: "Result",
