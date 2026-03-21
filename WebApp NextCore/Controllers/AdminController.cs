@@ -208,5 +208,73 @@ namespace WebApp_NextCore.Controllers
 
             return RedirectToAction(nameof(Service));
         }
+
+        [Authorize(Roles ="Admin")]
+        public IActionResult Blog()
+        {
+            var posts = _context.BlogPosts
+                .OrderByDescending(x=>x.CreatedAt)
+                .ToList();
+
+            return View(posts);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult CreatePost()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles ="Admin")]
+        public IActionResult CreatePost(BlogPost post)
+        {
+            if (ModelState.IsValid)
+            {
+                post.CreatedAt = DateTime.Now;
+
+                _context.BlogPosts.Add(post);
+                _context.SaveChanges();
+
+                return RedirectToAction(nameof(Blog));
+            }
+            return View(post);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult EditPost(int id)
+        {
+            var post = _context.BlogPosts.Find(id);
+            return View(post);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult EditPost(BlogPost post)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.BlogPosts.Update(post);
+                _context.SaveChanges();
+
+                return RedirectToAction(nameof(Blog));
+            }
+
+            return View(post);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult DeletePost(int id)
+        {
+            var post = _context.BlogPosts.Find(id);
+
+            if (post != null)
+            {
+                _context.BlogPosts.Remove(post);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction(nameof(Blog));
+        }
     }
 }

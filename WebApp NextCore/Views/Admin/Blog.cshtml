@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BlogPost>
+
+<h2>Блог</h2>
+
+<a asp-action="CreatePost" class="btn btn-success mb-3">
+    Добавить статью
+</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Заголовок</th>
+            <th>Дата</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var post in Model)
+        {
+            <tr>
+                <td>@post.Title</td>
+                <td>@post.CreatedAt.ToString("dd.MM.yyyy")</td>
+                <td>
+                    <a asp-action="EditPost"
+                       asp-route-id="@post.Id"
+                       class="btn btn-warning btn-sm">
+                        Изменить
+                    </a>
+
+                    <a asp-action="DeletePost"
+                       asp-route-id="@post.Id"
+                       class="btn btn-danger btn-sm"
+                       onclick="return confirm('Удалить статью?')">
+                        Удалить
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
