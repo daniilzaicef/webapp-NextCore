@@ -40,9 +40,14 @@ namespace WebApp_NextCore.Controllers
             return View();
         }
 
-        public IActionResult PageNotFound()
+        public IActionResult About()
         {
             return View();
+        }
+
+        public IActionResult PageNotFound()
+        {
+            return View("NotFound");
         }
     }
 }
