@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ServiceRequest>
+
+@{
+    ViewData["Title"] = "Заявки";
+}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Заявки пользователей</h2>
+
+    <table class="table table-bordered table-hover shadow">
+        <thead class="table-dark">
+            <tr>
+                <th>Имя</th>
+                <th>Email</th>
+                <th>Услуга</th>
+                <th>Сообщение</th>
+                <th>Дата</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Email</td>
+                    <td>@item.Service?.Title</td>
+                    <td>@item.Message</td>
+                    <td>@item.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+                    <td>
+                        <form asp-action="DeleteRequest" method="post">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Удалить заявку?')">
+                                Удалить
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

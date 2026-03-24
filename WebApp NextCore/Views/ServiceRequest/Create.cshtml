@@ -1,0 +1,36 @@
+﻿@model ServiceRequest
+
+@{
+    ViewData["Title"] = "Заявка";
+}
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+
+        <h2 class="mb-4 text-center">Оставить заявку</h2>
+
+        <form asp-action="Create" method="post">
+
+            <input type="hidden" asp-for="ServiceId" />
+
+            <div class="mb-3">
+                <label>Ваше имя</label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label>Сообщение</label>
+                <textarea asp-for="Message" class="form-control"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">
+                Отправить заявку
+            </button>
+        </form>
+    </div>
+</div>

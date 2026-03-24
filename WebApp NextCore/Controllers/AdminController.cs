@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApp_NextCore.Data;
 using WebApp_NextCore.Models;
 using static System.Net.Mime.MediaTypeNames;
@@ -171,7 +172,7 @@ namespace WebApp_NextCore.Controllers
                 return RedirectToAction(nameof(Service));
             }
 
-            return View();
+            return View(service);
         }
 
         [Authorize(Roles = "Admin")]
@@ -275,6 +276,31 @@ namespace WebApp_NextCore.Controllers
             }
 
             return RedirectToAction(nameof(Blog));
+        }
+
+        public IActionResult Requests()
+        {
+            var requests = _context.ServiceRequests
+                .Include(r => r.Service)
+                .OrderByDescending(r => r.CreatedAt)
+                .ToList();
+
+            return View(requests);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteRequest(int id)
+        {
+            var request = _context.ServiceRequests.Find(id);
+
+            if (request != null)
+            {
+                _context.ServiceRequests.Remove(request);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Requests");
         }
     }
 }

@@ -86,11 +86,15 @@
                                 @if (User.IsInRole("Admin"))
                                 {
                                     <li class="dropdown-item">
-                                        <a class="dropdown-item" asp-controller="Admin" asp-action="Index">Вакансии</a>
+                                        <a class="dropdown-item" 
+                                        asp-controller="Admin" 
+                                        asp-action="Index">Вакансии</a>
                                     </li>
 
                                     <li class="dropdown-item">
-                                        <a class="dropdown-item" asp-controller="Admin" asp-action="Response">
+                                        <a class="dropdown-item" 
+                                        asp-controller="Admin" 
+                                        asp-action="Response">
                                             Отклики на вакансии
                                         </a>
                                     </li>
@@ -111,6 +115,13 @@
                                            asp-controller="Admin"
                                            asp-action="Blog">
                                             Управление блогом
+                                        </a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a class="dropdown-item" 
+                                            asp-controller="Admin" 
+                                            asp-action="Requests">
+                                            Заявки
                                         </a>
                                     </li>
                                 }

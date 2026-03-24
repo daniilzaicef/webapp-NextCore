@@ -28,6 +28,7 @@ namespace WebApp_NextCore.Data
         public DbSet<FeedbackMessage> FeedbacksMessage { get; set; }
         public DbSet<VacancyResponse> VacancyResponses { get; set; }
         public DbSet<BlogPost> BlogPosts { get; set; } 
+        public DbSet<ServiceRequest> ServiceRequests { get; set; }
 
 
     }

@@ -20,20 +20,15 @@
 
         <!-- Дополнительный текст -->
         <div class="mt-4">
-            <h4>Что входит в услугу:</h4>
-
-            <ul>
-                <li>Анализ требований</li>
-                <li>Проектирование решения</li>
-                <li>Разработка и внедрение</li>
-                <li>Тестирование</li>
-                <li>Поддержка и сопровождение</li>
-            </ul>
+            <h4>Подробное описание</h4>
+            <p>
+                @Model.FullDescription
+            </p>
         </div>
 
         <!-- Кнопки -->
         <div class="text-center mt-4">
-            <a asp-controller="Home" asp-action="Contact"
+            <a asp-controller="ServiceRequest" asp-action="Create" asp-route-serviceId="@Model.Id"
                class="btn btn-primary me-2">
                 Заказать услугу
             </a>
