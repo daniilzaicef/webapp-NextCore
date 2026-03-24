@@ -1,0 +1,48 @@
+﻿@model WebApp_NextCore.Models.ServiceModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg p-4">
+
+        <!-- Заголовок -->
+        <div class="text-center mb-4">
+            <h1 class="fw-bold mt-3">@Model.Title</h1>
+        </div>
+
+        <!-- Описание -->
+        <p class="text-muted fs-5 text-center">
+            @Model.Description
+        </p>
+
+        <!-- Дополнительный текст -->
+        <div class="mt-4">
+            <h4>Что входит в услугу:</h4>
+
+            <ul>
+                <li>Анализ требований</li>
+                <li>Проектирование решения</li>
+                <li>Разработка и внедрение</li>
+                <li>Тестирование</li>
+                <li>Поддержка и сопровождение</li>
+            </ul>
+        </div>
+
+        <!-- Кнопки -->
+        <div class="text-center mt-4">
+            <a asp-controller="Home" asp-action="Contact"
+               class="btn btn-primary me-2">
+                Заказать услугу
+            </a>
+
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                Назад
+            </a>
+        </div>
+
+    </div>
+
+</div>

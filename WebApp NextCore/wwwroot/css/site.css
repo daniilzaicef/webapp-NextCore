@@ -20,3 +20,25 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.service-card {
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+    .service-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+.card {
+    border-radius: 20px;
+}
+
+    .card i {
+        transition: 0.3s;
+    }
+
+    .card:hover i {
+        transform: scale(1.1);
+    }

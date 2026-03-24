@@ -19,9 +19,14 @@ namespace WebApp_NextCore.Controllers
             return View(services);
         }
         //Подробное описание конкретной услуги с кейсами и ценами.
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            var service = _context.Services.FirstOrDefault(s => s.Id == id);
+            if (service == null)
+            {
+                return NotFound();
+            }
+            return View(service);
         }
     }
 }

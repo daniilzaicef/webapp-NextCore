@@ -12,6 +12,8 @@ namespace WebApp_NextCore.Models
 
         public string Description { get; set; }
 
+        //public string FullDescription { get; set; }
+
 
     }
 }
