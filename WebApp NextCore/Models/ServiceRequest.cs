@@ -7,9 +7,6 @@ namespace WebApp_NextCore.Models
     public class ServiceRequest
     {
         public int Id { get; set; }
-        public string UserId { get; set; }
-
-        public IdentityUser User { get; set; }
 
         [Required]
         public string Name { get; set; }
