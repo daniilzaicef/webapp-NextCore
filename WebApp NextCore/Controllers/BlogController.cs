@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApp_NextCore.Data;
+using WebApp_NextCore.Models;
 
 namespace WebApp_NextCore.Controllers
 {
@@ -13,12 +14,18 @@ namespace WebApp_NextCore.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string search)
         {
-            var posts = _context.BlogPosts
-                .OrderBy(x => x.CreatedAt)
-                .ToList();
-            return View(posts);
+            var posts = _context.BlogPosts.AsQueryable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                posts = posts.Where(p =>
+                    p.Title.Contains(search) ||
+                    p.Content.Contains(search));
+            }
+
+            return View(posts.ToList());
         }
 
         //Страница чтения статьи
@@ -29,6 +36,6 @@ namespace WebApp_NextCore.Controllers
             if(post == null)
                 return NotFound();
             return View(post);
-        }
+        }        
     }
 }

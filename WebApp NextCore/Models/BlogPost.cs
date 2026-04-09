@@ -9,6 +9,8 @@
 
         public string Content {  get; set; }
 
+        public string? ImagePath { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

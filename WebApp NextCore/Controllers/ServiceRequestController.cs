@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using WebApp_NextCore.Data;
 using WebApp_NextCore.Models;
 
@@ -8,9 +9,12 @@ namespace WebApp_NextCore.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public ServiceRequestController(ApplicationDbContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public ServiceRequestController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET
@@ -28,17 +32,17 @@ namespace WebApp_NextCore.Controllers
         // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(ServiceRequest request)
+        public async Task<IActionResult> Create(ServiceRequest model)
         {
-            if (ModelState.IsValid)
-            {
-                _context.ServiceRequests.Add(request);
-                _context.SaveChanges();
+            var user = await _userManager.GetUserAsync(User);
 
-                TempData["Success"] = "Заявка отправлена!";
-                return RedirectToAction("Index", "Service");
-            }
-            return View(request);
+            model.UseId = user.Id;
+            model.CreatedAt = DateTime.Now;
+
+            _context.ServiceRequests.Add(model);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Service");
         }
     }
 }

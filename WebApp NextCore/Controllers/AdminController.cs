@@ -24,7 +24,6 @@ namespace WebApp_NextCore.Controllers
             return View(vacancies);
         }
 
-
         public IActionResult Create()
         {
             return View();
@@ -43,7 +42,7 @@ namespace WebApp_NextCore.Controllers
             return View(vacancy);
         }
 
-        //Редактирование списка услуг.
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             var vacancy = _context.Vacancy.Find(id);
@@ -61,6 +60,7 @@ namespace WebApp_NextCore.Controllers
             }
             return View(vacancy);
         }
+
 
         public IActionResult Delete(int id)
         {
@@ -227,18 +227,34 @@ namespace WebApp_NextCore.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles ="Admin")]
-        public IActionResult CreatePost(BlogPost post)
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreatePost(BlogPost post, IFormFile image)
         {
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await image.CopyToAsync(stream);
+                    }
+
+                    post.ImagePath = fileName;
+                }
+
                 post.CreatedAt = DateTime.Now;
 
                 _context.BlogPosts.Add(post);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Blog));
             }
+
             return View(post);
         }
 
@@ -250,18 +266,23 @@ namespace WebApp_NextCore.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-        public IActionResult EditPost(BlogPost post)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditPost(BlogPost model, IFormFile image)
         {
-            if (ModelState.IsValid)
-            {
-                _context.BlogPosts.Update(post);
-                _context.SaveChanges();
+            var post = _context.BlogPosts.Find(model.Id);
 
-                return RedirectToAction(nameof(Blog));
+            if (post != null)
+            {
+                post.Title = model.Title;
+                post.Content = model.Content;
+                post.ShortDescription = model.ShortDescription;
+
+                await _context.SaveChangesAsync();
             }
 
-            return View(post);
+            _context.BlogPosts.Update(post);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Blog));
         }
 
         [Authorize(Roles = "Admin")]
@@ -302,5 +323,43 @@ namespace WebApp_NextCore.Controllers
 
             return RedirectToAction("Requests");
         }
+
+        [HttpPost]
+        public IActionResult UpdateStatus([FromBody] UpdateStatusModel model)
+        {
+            var request = _context.ServiceRequests.Find(model.Id);
+
+            if (request != null)
+            {
+                request.Status = model.Status;
+                _context.SaveChanges();
+            }
+
+            return Ok();
+        }
+
+        public IActionResult Feedback()
+        {
+            var messages = _context.FeedbacksMessage
+                .OrderByDescending(m => m.Id)
+                .ToList();
+
+            return View(messages);
+        }
+
+        public IActionResult DeleteFeedback(int id)
+        {
+            var message = _context.FeedbacksMessage.Find(id);
+
+            if (message != null)
+            {
+                _context.FeedbacksMessage.Remove(message);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Feedback");
+        }
+
+
     }
 }

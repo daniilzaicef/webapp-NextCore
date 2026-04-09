@@ -1,17 +1,21 @@
 ﻿@model BlogPost
 
-<h2>@Model.Title</h2>
+<link href="~/css/Blog.css" rel="stylesheet" />
 
-<p class="text-muted">
-    @Model.CreatedAt.ToString("dd.MM.yyyy")
-</p>
+<div class="blog-details">
 
-<hr />
+    <img src="/images/@Model.ImagePath" class="details-img" />
 
-<p>
-    @Model.Content
-</p>
+    <h1>@Model.Title</h1>
 
-<a asp-action="Index" class="btn btn-secondary mt-3">
-    ← Назад к блогу
-</a>
+    <p class="blog-date">
+        @Model.CreatedAt.ToString("dd MMM yyyy")
+    </p>
+
+    <p class="details-content">
+        @Model.Content
+    </p>
+
+    <a asp-action="Index" class="back-btn">← Назад</a>
+
+</div>

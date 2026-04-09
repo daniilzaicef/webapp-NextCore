@@ -3,7 +3,8 @@
 @{
     ViewData["Title"] = "Заявки";
 }
-
+<link href="~/css/AdminRequest.css" rel="stylesheet" />
+<script src="/js/UpdateStatus.js"></script>
 <div class="container mt-5">
 
     <h2 class="mb-4">Заявки пользователей</h2>
@@ -17,6 +18,8 @@
                 <th>Сообщение</th>
                 <th>Дата</th>
                 <th>Действия</th>
+                <th>Статус</th>
+                <th></th>
             </tr>
         </thead>
 
@@ -30,6 +33,23 @@
                     <td>@item.Message</td>
                     <td>@item.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
                     <td>
+                        <span id="status-@item.Id" class="status @item.Status.ToLower()">
+                            @item.Status
+                        </span>
+                    </td>
+
+                    <td>
+                        <button class="btn btn-warning btn-sm"
+                                onclick="updateStatus(@item.Id, 'В работе')">
+                            В работу
+                        </button>
+
+                        <button class="btn btn-success btn-sm"
+                                onclick="updateStatus(@item.Id, 'Завершена')">
+                            Завершить
+                        </button>
+                    </td>
+                    <td>
                         <form asp-action="DeleteRequest" method="post">
                             <input type="hidden" name="id" value="@item.Id" />
                             <button class="btn btn-danger btn-sm"
@@ -39,8 +59,9 @@
                         </form>
                     </td>
                 </tr>
+                @* Кнопка удлаить добавь потом *@
+                
             }
-
         </tbody>
     </table>
 </div>

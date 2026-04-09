@@ -13,10 +13,18 @@ namespace WebApp_NextCore.Controllers
         }
 
         //Список всех направлений 
-        public IActionResult Index()
+        public IActionResult Index(string search)
         {
-            var services = _context.Services.ToList();
-            return View(services);
+            var services = _context.Services.AsQueryable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                services = services.Where(s =>
+                    s.Title.Contains(search) ||
+                    s.Description.Contains(search));
+            }
+
+            return View(services.ToList());
         }
         //Подробное описание конкретной услуги с кейсами и ценами.
         public IActionResult Details(int id)

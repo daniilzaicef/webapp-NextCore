@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ServiceRequest>
+
+@{
+    ViewData["Title"] = "Мои заявки";
+}
+
+<link href="~/css/Profile.css" rel="stylesheet" />
+<div class="dashboard">
+
+    <!-- Sidebar (тот же что в Profile) -->
+    <aside class="sidebar">
+        <h3 class="logo">NexusCore</h3>
+
+        <div class="user-info">
+            <p>@User.Identity.Name</p>
+            <span>Пользователь</span>
+        </div>
+
+        <nav>
+            <a asp-action="Profile">🏠 Главная</a>
+            <a asp-action="MyRequests" class="active">📄 Мои заявки</a>
+        </nav>
+
+        <form asp-action="Logout" method="post" class="logout-form">
+            @Html.AntiForgeryToken()
+            <button type="submit">Выйти</button>
+        </form>
+    </aside>
+
+    <!-- Контент -->
+    <main class="content">
+
+        <h1>Мои заявки</h1>
+
+        @if (Model == null || !Model.Any())
+        {
+            <div class="info-box mt-3">
+                <p>У вас пока нет заявок 😔</p>
+            </div>
+        }
+        else
+        {
+            <div class="requests">
+
+                @foreach (var item in Model)
+                {
+                    <div class="request-card">
+
+                        <div class="request-header">
+                            <h4>@item.Service?.Title</h4>
+                            <span class="date">
+                                @item.CreatedAt.ToString("dd.MM.yyyy")
+                            </span>
+                        </div>
+
+                        <p class="message">
+                            @item.Message
+                        </p>
+
+                        <div class="request-footer">
+
+                            <!-- если добавишь статус -->
+                            <span class="status @item.Status.ToLower()">
+                                @item.Status
+                            </span>
+
+                        </div>
+
+                    </div>
+                }
+            </div>
+        }
+
+    </main>
+
+</div>

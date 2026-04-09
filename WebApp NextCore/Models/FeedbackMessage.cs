@@ -15,15 +15,15 @@ namespace WebApp_NextCore.Models
         [EmailAddress]
         public string Email { get; set; }
 
-        [StringLength(20)]
+        [Required(ErrorMessage ="Введите номер телефона")]
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "Номер должен состоять ровно из 12 цифр")]
+        [RegularExpression(@"^\d+$", ErrorMessage = "Допускаются только цифры")]
         public string Phone { get; set; }
 
         [Required(ErrorMessage = "Введите сообщение")]
         public string Message { get; set; }
 
-        public DateTime ReceivedDate { get; set; }
-
-        public string RelatedVacancy { get; set; } // Если это отклик на вакансию
+        public DateTime ReceivedDate { get; set; } = DateTime.Now;
 
     }
 }

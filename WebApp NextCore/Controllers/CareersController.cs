@@ -56,6 +56,15 @@ namespace WebApp_NextCore.Controllers
             return View(model);
         }
 
+        public IActionResult Details(int id)
+        {
+            var vacancy = _context.Vacancy.FirstOrDefault(x => x.Id == id);
+
+            if (vacancy == null)
+                return NotFound();
+            return View(vacancy);
+        }
+
         public IActionResult Thanks()
         {
             return View();

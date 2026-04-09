@@ -11,11 +11,17 @@
                     <h5 class="card-title">@v.Title</h5>
                     <p class="card-text">@v.Description</p>
                     <p class="card-text">@v.Requirements</p>
+                    <p class="card-">@v.CreatedAt.ToString("dd MM yy")</p>
 
                     <div class="mt-auto">
                         <a asp-action="Apply" asp-route-id="@v.Id"
-                           class="btn btn-primary w-100">
+                           class="btn btn-primary">
                             Откликнуться
+                        </a>
+                        <a asp-action="Details"
+                           asp-route-id="@v.Id"
+                           class="btn btn-primary">
+                            Подробнее
                         </a>
                     </div>
                 </div>

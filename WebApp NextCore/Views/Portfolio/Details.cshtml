@@ -1,15 +1,28 @@
 ﻿@model ProjectModel
 
-<h2 class="mb-3">@Model.Title</h2>
+<link href="~/css/Portfolio.css" rel="stylesheet" />
 
-<div class="card shadow p-4">
-    <p><strong>Описание:</strong></p>
-    <p>@Model.Description</p>
+<div>
 
-    <p><strong>Технологии:</strong></p>
-    <p>@Model.Technologies</p>
+    <div class="project-hero">
+        <h1>@Model.Title</h1>
+    </div>
 
-    <p><strong>Дата создания:</strong> @Model.CreatedAt.ToString("dd.MM.yyyy")</p>
+    <!-- технологии -->
+    <div class="project-tech">
+        <div class="tech-list">
+            <h3>Стек Технологий</h3>
+            <p>@Model.Technologies</p>
+        </div>
+    </div>
 
-    <a asp-action="Index" class="btn btn-secondary mt-3">Назад к проектам</a>
+    <div class="project-container">
+        <div class="project-block">
+            <p>@Model.Description</p>
+        </div>
+
+        <a asp-action="Index" class="back-btn">← Назад</a>
+
+    </div>
+
 </div>

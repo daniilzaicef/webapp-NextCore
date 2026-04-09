@@ -1,0 +1,72 @@
+﻿body {
+}
+
+/* Фон страницы */
+.login-page {
+    height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Карточка */
+.login-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    width: 350px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+    .login-card h2 {
+        margin-bottom: 20px;
+    }
+
+/* Поля */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Пароль */
+.password-wrapper {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Кнопка */
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #1e1e2f;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+    .btn-login:hover {
+        background: #444;
+    }
+
+/* Ошибки */
+.error-box {
+    color: red;
+    margin-bottom: 10px;
+}

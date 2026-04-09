@@ -1,21 +1,27 @@
 ﻿@model IEnumerable<ProjectModel>
 
-<h2 class="text-center mb-4">Наши проекты</h2>
+<link href="~/css/Portfolio.css" rel="stylesheet" />
 
-<div class="row">
-    @foreach (var p in Model)
+<h2 class="portfolio-title">Наши проекты</h2>
+
+<div class="portfolio-grid">
+
+    @foreach (var project in Model)
     {
-        <div class="col-md-4 mb-4">
-            <div class="card shadow h-100">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">@p.Title</h5>
-                    <p class="card-text">@p.Description.Substring(0, Math.Min(p.Description.Length, 100))...</p>
+        <div class="portfolio-card">
 
-                    <a asp-action="Details" asp-route-id="@p.Id" class="btn btn-outline-primary mt-auto">
-                        Подробнее
-                    </a>
-                </div>
+            <div class="portfolio-content">
+
+                <h3>@project.Title</h3>
+
+                <a asp-action="Details"
+                   asp-route-id="@project.Id"
+                   class="portfolio-btn">
+                    Подробнее →
+                </a>
             </div>
+
         </div>
     }
+
 </div>

@@ -1,0 +1,34 @@
+﻿@model VacancyModel
+
+<link href="~/css/Vacancy.css" rel="stylesheet" />
+
+<div class="vacancy-wrapper">
+
+    <!-- Верхний блок -->
+    <div class="vacancy-header">
+        <h1>@Model.Title</h1>
+    </div>
+
+    <div class="vacancy-content">
+
+        <div class="vacancy-block">
+            <h3>📄 Описание</h3>
+            <p>@Model.Description</p>
+        </div>
+
+        <div class="vacancy-block">
+            <h3>✅ Требования</h3>
+            <p>@Model.Requirements</p>
+        </div>
+
+        <div class="vacancy-block">
+            <h3>📌 Обязанности</h3>
+            <p>@Model.Responsibilities</p>
+        </div>
+    </div>
+
+    
+
+    <a asp-action="Index" class="back-btn">← Назад к вакансиям</a>
+
+</div>

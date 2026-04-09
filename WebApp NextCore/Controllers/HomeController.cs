@@ -37,7 +37,7 @@ namespace WebApp_NextCore.Controllers
                 ModelState.Clear();//чтобы очистить форму
                 return RedirectToAction("Contact");
             }
-            return View();
+            return View(new FeedbackMessage());
         }
 
         public IActionResult About()

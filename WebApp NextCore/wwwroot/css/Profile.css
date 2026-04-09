@@ -1,0 +1,225 @@
+﻿body {
+}
+
+/* Layout */
+.dashboard {
+    display: flex;
+    min-height: 80vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #1e1e2f;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* Menu */
+.sidebar nav a {
+    display: block;
+    padding: 10px;
+    color: #ccc;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    transition: 0.3s;
+}
+
+    .sidebar nav a:hover,
+    .sidebar nav a.active {
+        background: #4e73df;
+        color: #fff;
+    }
+
+/* Logout */
+.logout-form {
+    margin-top: auto;
+}
+
+    .logout-form button {
+        width: 100%;
+        background: #dc3545;
+        border: none;
+        padding: 10px;
+        color: white;
+        border-radius: 8px;
+    }
+
+/* Content */
+.content {
+    flex: 1;
+    padding: 40px;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Stats */
+.stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-box {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    flex: 1;
+    text-align: center;
+    transition: 0.3s;
+}
+
+    .stat-box:hover {
+        transform: translateY(-5px);
+    }
+
+.active-status {
+    color: green;
+    font-weight: bold;
+}
+
+/* Info */
+.info-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+}
+
+/* Requests */
+.requests {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.request-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+    .request-card:hover {
+        transform: translateY(-3px);
+    }
+
+/* Header */
+.request-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date {
+    font-size: 12px;
+    color: #999;
+}
+
+/* Message */
+.message {
+    margin: 15px 0;
+    color: #555;
+}
+
+/* Footer */
+.request-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Status */
+.status {
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+    .status.new {
+        background: #e3f2fd;
+        color: #2196f3;
+    }
+
+    .status.вработе {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .status.завершена {
+        background: #d4edda;
+        color: #155724;
+    }
+
+/*Main*/
+.profile-container {
+    padding: 40px;
+}
+
+.profile-card {
+    display: flex;
+    gap: 40px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* Аватар */
+.profile-avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #4e73df;
+}
+
+.avatar-placeholder {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #1e1e2f;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+/* Правая часть */
+.profile-right h2 {
+    margin-bottom: 5px;
+}
+
+.email {
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.profile-info p {
+    margin: 5px 0;
+}
+
+/* Кнопка */
+.edit-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #1e1e2f;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+    .edit-btn:hover {
+        background: #4e73df;
+    }

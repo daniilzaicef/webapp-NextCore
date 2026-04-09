@@ -3,20 +3,21 @@
 <h2>Добавить услугу</h2>
 
 <form asp-action="CreateService" method="post">
+    <div class="card p-4 mb-4 shadow-sm">
+        <div class="mb-3">
+            <label>Название</label>
+            <input asp-for="Title" class="form-control" />
+        </div>
 
-    <div class="mb-3">
-        <label>Название</label>
-        <input asp-for="Title" class="form-control" />
-    </div>
+        <div class="mb-3">
+            <label>Описание</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
 
-    <div class="mb-3">
-        <label>Описание</label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">Полное описание</label>
-        <textarea asp-for="FullDescription" class="form-control" rows="5"></textarea>
+        <div class="mb-3">
+            <label class="form-label">Полное описание</label>
+            <textarea asp-for="FullDescription" class="form-control" rows="5"></textarea>
+        </div>
     </div>
 
     <button class="btn btn-success">Сохранить</button>

@@ -66,14 +66,6 @@
                     </li>
                 </ul>
 
-                <!--Поиск-->
-                @* <form class="d-flex me-3" asp-controller="Search" asp-action="Index" method="get">
-                    <input class="form-control me-2" type="search" name="query" placeholder="Поиск..." />
-                    <button class="btn btn-outline-light" type="submit">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </form> *@
-
                 <ul class="navbar-nav">
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -100,21 +92,21 @@
                                     </li>
                                     <li class="dropdown-item">
                                         <a class="dropdown-item" asp-controller="Admin" asp-action="Projects">
-                                            Проекты
+                                            Портфолио
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
                                         <a class="dropdown-item"
                                            asp-controller="Admin"
                                            asp-action="Service">
-                                            Управление услугами
+                                            Услуги
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
                                         <a class="dropdown-item"
                                            asp-controller="Admin"
                                            asp-action="Blog">
-                                            Управление блогом
+                                            Блог
                                         </a>
                                     </li>
                                     <li class="dropdown-item">
@@ -124,6 +116,24 @@
                                             Заявки
                                         </a>
                                     </li>
+                                    <li class="dropdown-item">
+                                        <a class="dropdown-item"
+                                            asp-action="Feedback" 
+                                            asp-controller="Admin">
+                                            Сообщения
+                                        </a>
+                                    </li>
+                                }
+                                else if (User.IsInRole("User"))
+                                {
+                                    <li class="dropdown-item">
+                                        <a class="dropdown-item"
+                                            asp-controller="Account" 
+                                            asp-action="Profile">
+                                            Кабинет
+                                        </a>
+                                    </li>
+                                    
                                 }
                                 <li>
                                     <form asp-controller="Account" asp-action="Logout" method="post" class="dropdown-item">

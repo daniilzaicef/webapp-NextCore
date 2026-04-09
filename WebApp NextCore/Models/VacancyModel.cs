@@ -12,6 +12,7 @@ namespace WebApp_NextCore.Models
         [Required]
         public string Description { get; set; } = string.Empty;
         public string Requirements { get; set; } = string.Empty;
+        public string Responsibilities { get; set; } = string.Empty;
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
     }

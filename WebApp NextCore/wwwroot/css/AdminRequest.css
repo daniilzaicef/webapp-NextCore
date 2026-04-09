@@ -1,0 +1,23 @@
+﻿body {
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+    .status.новая {
+        background: #e3f2fd;
+        color: #2196f3;
+    }
+
+    .status.вработе {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .status.завершена {
+        background: #d4edda;
+        color: #155724;
+    }

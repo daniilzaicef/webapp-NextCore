@@ -3,24 +3,48 @@
 @{
     ViewData["Title"] = "Вход";
 }
+<link href="~/css/Login.css" rel="stylesheet" />
+<div class="login-page">
 
-<h2>Вход</h2>
+    <div class="login-card">
 
-<form asp-action="Login" method="post">
-    <div class="form-group mb-3">
-        <label asp-for="Email" class="form-label">Электронная почта</label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
+        <h2>Вход в аккаунт</h2>
+
+        <form asp-action="Login" method="post">
+
+            <div asp-validation-summary="All" class="error-box"></div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input asp-for="Email" class="form-control" placeholder="Введите email" />
+            </div>
+
+            <div class="form-group password-group">
+                <label>Пароль</label>
+
+                <div class="password-wrapper">
+                    <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Введите пароль" />
+                    <span class="toggle-password" onclick="togglePassword()">👁</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login">Войти</button>
+
+        </form>
+
     </div>
+</div>
+<script>
+    function togglePassword() {
+        const input = document.getElementById("password");
 
-    <div class="form-group mb-3">
-        <label asp-for="Password" class="form-label">Пароль</label>
-        <input asp-for="Password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Войти</button>
-</form>
+        if (input.type === "password") {
+            input.type = "text";
+        } else {
+            input.type = "password";
+        }
+    }
+</script>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

@@ -1,0 +1,58 @@
+﻿@model ApplicationUser
+@{
+    ViewData["Title"] = "Личный кабинет";
+}
+
+<link href="~/css/Profile.css" rel="stylesheet" />
+<div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h3 class="logo">NexusCore</h3>
+
+        <nav>
+            <a asp-action="Profile" class="active">🏠 Главная</a>
+            <a asp-action="MyRequest">📄 Мои заявки</a>
+        </nav>
+
+        <form asp-action="Logout" method="post" class="logout-form">
+            @Html.AntiForgeryToken()
+            <button type="submit">Выйти</button>
+        </form>
+    </aside>
+
+    <!-- Content -->
+    <main class="content">
+        <div class="profile-container">
+
+            <div class="profile-card">
+
+                <!-- АВАТАР -->
+                <div class="profile-left">
+                    @if (Model != null && !string.IsNullOrEmpty(Model.AvatarPath))
+                    {
+                        <img src="~/images/avatars/@Model.AvatarPath" class="profile-avatar" />
+                    }
+                    else
+                    {
+                        <div class="avatar-placeholder">👤</div>
+                    }
+                </div>
+
+                <!-- ИНФА -->
+                <div class="profile-right">
+
+                    <h2>@Model.FullName</h2>
+                    <p class="email">@Model.Email</p>
+
+                    <div class="profile-info">
+                        <p><strong>Телефон:</strong> @Model.PhoneNumber</p>
+                        <p><strong>О себе:</strong> @Model.About</p>
+                    </div>
+
+                    <a asp-action="EditProfile" class="edit-btn">Редактировать профиль</a>
+
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

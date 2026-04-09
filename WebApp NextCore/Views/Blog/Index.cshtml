@@ -1,26 +1,41 @@
 ﻿@model IEnumerable<BlogPost>
+<link href="~/css/Blog.css" rel="stylesheet" />
+<h2 class="blog-title">Блог</h2>
 
-<h2 class="text-center mb-4">Блог</h2>
+<form method="get" class="search-bar">
+    <input type="text" name="search" placeholder="Поиск статей..." />
+    <button type="submit">🔍</button>
+</form>
 
-@foreach (var post in Model)
-{
-    <div class="card mb-3 shadow">
-        <div class="card-body">
+<div class="blog-grid">
 
-            <h4>@post.Title</h4>
+    @foreach (var post in Model)
+    {
+        <div class="blog-card">
 
-            <p class="text-muted">
-                @post.CreatedAt.ToString("dd.MM.yyyy")
-            </p>
+            <img src="/images/@post.ImagePath" class="blog-card-img" />
 
-            <p>@post.ShortDescription</p>
+            <div class="blog-card-body">
 
-            <a asp-action="Details"
-               asp-route-id="@post.Id"
-               class="btn btn-primary">
-                Читать далее
-            </a>
+                <p class="blog-date">
+                    @post.CreatedAt.ToString("dd MMM yyyy")
+                </p>
+
+                <h3>@post.Title</h3>
+
+                <p class="blog-desc">
+                    @post.ShortDescription
+                </p>
+
+                <a asp-action="Details"
+                   asp-route-id="@post.Id"
+                   class="read-more">
+                    Читать →
+                </a>
+
+            </div>
 
         </div>
-    </div>
-}
+    }
+
+</div>

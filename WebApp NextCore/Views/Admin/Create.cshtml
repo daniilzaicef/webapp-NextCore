@@ -1,17 +1,33 @@
 ﻿@model VacancyModel
 
+<h2 class="mb-4">Создание вакансии</h2>
+
 <form asp-action="Create" method="post">
-    <div class="mb-3">
-        <label>Название</label>
-        <input asp-for="Title" class="form-control" />
+    <div class="card p-4 mb-4 shadow-sm">
+        <div class="mb-3">
+            <label>Название вакансии</label>
+            <input asp-for="Title" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Описание</label>
+            <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label>Обязанности</label>
+            <textarea asp-for="Responsibilities" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label>Требования</label>
+            <textarea asp-for="Requirements" class="form-control" rows="2"></textarea>
+        </div>
+
     </div>
-    <div class="mb-3">
-        <label>Описание</label>
-        <textarea asp-for="Description" class="form-control"></textarea>
+
+    <div class="d-flex gap-2">
+        <button class="btn btn-success">Сохранить</button>
+        <a asp-action="Index" class="btn btn-secondary">Назад</a>
     </div>
-    <div class="mb-3">
-        <label>Требования</label>
-        <textarea asp-for="Requirements" class="form-control">Требования</textarea>
-    </div>
-    <button type="submit" class="btn btn-success">Сохранить</button>
 </form>

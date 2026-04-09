@@ -7,7 +7,7 @@ namespace WebApp_NextCore.Models
     public class ServiceRequest
     {
         public int Id { get; set; }
-
+    
         [Required]
         public string Name { get; set; }
 
@@ -18,9 +18,14 @@ namespace WebApp_NextCore.Models
         [Required]
         public string Message { get; set; }
 
+        public string UseId {  get; set; }
+        public ApplicationUser User { get; set; }
+
         // Связь с услугой
         public int ServiceId { get; set; }
         public ServiceModel? Service { get; set; }
+
+        public string Status { get; set; } = "Новая";
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
     }

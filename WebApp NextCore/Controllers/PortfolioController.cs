@@ -13,10 +13,18 @@ namespace WebApp_NextCore.Controllers
         }
 
         //Галерея выполненных проектов с фильтрацией по технологиям
-        public IActionResult Index()
+        public IActionResult Index(string search)
         {
-            var projects = _context.Projects.ToList();
-            return View(projects);
+            var projects = _context.Projects.AsQueryable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                projects = projects.Where(p =>
+                    p.Title.Contains(search) ||
+                    p.Description.Contains(search));
+            }
+
+            return View(projects.ToList());
         }
 
         public IActionResult Details(int id)

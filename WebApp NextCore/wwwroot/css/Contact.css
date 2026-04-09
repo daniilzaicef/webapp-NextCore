@@ -1,0 +1,94 @@
+﻿body {
+}
+
+/* Обёртка */
+.contact-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+/* Карточка */
+.contact-card {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+    /* Заголовок */
+    .contact-card h2 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+/* Подзаголовок */
+.contact-subtitle {
+    text-align: center;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* Поля */
+.form-group {
+    margin-bottom: 15px;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+
+    /* Input */
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        transition: 0.3s;
+    }
+
+        /* Фокус */
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #1e1e2f;
+            outline: none;
+            box-shadow: 0 0 5px rgba(30,30,47,0.3);
+        }
+
+    /* Ошибки */
+    .form-group span {
+        color: red;
+        font-size: 12px;
+    }
+
+/* Кнопка */
+.contact-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: #1e1e2f;
+    color: #fff;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+    .contact-btn:hover {
+        background: #33334d;
+    }
+
+/* Сообщение успеха */
+.contact-success {
+    background: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}

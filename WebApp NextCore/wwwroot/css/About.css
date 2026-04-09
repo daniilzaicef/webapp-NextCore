@@ -1,0 +1,81 @@
+﻿body {
+}
+
+/* Hero */
+.about-hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #1e1e2f, #34345c);
+    color: white;
+}
+
+    .about-hero h1 {
+        font-size: 36px;
+    }
+
+    .about-hero p {
+        margin-top: 10px;
+        color: #ccc;
+    }
+
+/* Контейнер */
+.about-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px;
+}
+
+/* Секции */
+.about-section {
+    margin-bottom: 40px;
+}
+
+/* Преимущества */
+.about-features {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.feature-card {
+    flex: 1;
+    min-width: 250px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+
+/* Команда */
+.about-team h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.team-card {
+    text-align: center;
+    background: #fff;
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+    .team-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 10px;
+    }

@@ -28,10 +28,13 @@
 
         <!-- Кнопки -->
         <div class="text-center mt-4">
-            <a asp-controller="ServiceRequest" asp-action="Create" asp-route-serviceId="@Model.Id"
-               class="btn btn-primary me-2">
-                Заказать услугу
-            </a>
+            @if (User.IsInRole("User"))
+            {
+                <a asp-controller="ServiceRequest" asp-action="Create" asp-route-serviceId="@Model.Id"
+                   class="btn btn-primary me-2">
+                    Заказать услугу
+                </a>
+            }
 
             <a asp-action="Index" class="btn btn-outline-secondary">
                 Назад

@@ -8,7 +8,6 @@
     <thead class="table-dark">
         <tr>
             <th>Название</th>
-            <th>Описание</th>
             <th>Технологии</th>
             <th></th>
         </tr>
@@ -18,7 +17,6 @@
         {
             <tr>
                 <td>@item.Title</td>
-                <td>@item.Description</td>
                 <td>@item.Technologies</td>
                 <td>
                     <a asp-action="EditProject" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Изменить</a>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FeedbackMessage>
+<h2>Сообщения с формы контактов</h2>
+
+<table class="table table-bordered table-hover shadow">
+    <thead class="table-dark">
+        <tr>
+            <th>ФИО</th>
+            <th>Email</th>
+            <th>Телефон</th>
+            <th>Сообщение</th>
+            <th>Дата</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.SenderName</td>
+                <td>@item.Email</td>
+                <td>@item.Phone</td>
+                <td>@item.Message</td>
+                <td>
+                    <span>
+                        @item.ReceivedDate.ToString("dd.MM.yyyy")
+                        <br />
+                        <small>@item.ReceivedDate.ToString("HH:mm")</small>
+                    </span>
+                <td>
+                    <a asp-action="DeleteFeedback" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                        Удалить
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
