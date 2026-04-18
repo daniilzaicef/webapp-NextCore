@@ -4,11 +4,9 @@
     ViewData["Title"] = "Услуги";
 }
 <link href="~/css/Service.css" rel="stylesheet" />
+
+
 <div class="container mt-5">
-    <form method="get" class="mb-4 d-flex">
-        <input type="text" name="search" class="form-control me-2" placeholder="Поиск услуг..." />
-        <button type="submit" class="btn btn-dark">Найти</button>
-    </form>
     <!-- Заголовок -->
     <div class="text-center mb-5">
         <h1 class="fw-bold">Наши услуги</h1>
@@ -16,6 +14,11 @@
             Мы предлагаем широкий спектр IT-услуг для вашего бизнеса
         </p>
     </div>
+
+    <form method="get" class="search-bar">
+        <input type="text" name="search" placeholder="Поиск Услуг..." />
+        <button type="submit">🔍</button>
+    </form>
 
     <!-- Карточки -->
     <div class="row g-4">

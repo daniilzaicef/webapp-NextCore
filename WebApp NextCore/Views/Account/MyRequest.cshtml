@@ -1,20 +1,13 @@
 ﻿@model IEnumerable<ServiceRequest>
-
 @{
     ViewData["Title"] = "Мои заявки";
 }
-
 <link href="~/css/Profile.css" rel="stylesheet" />
 <div class="dashboard">
 
     <!-- Sidebar (тот же что в Profile) -->
     <aside class="sidebar">
         <h3 class="logo">NexusCore</h3>
-
-        <div class="user-info">
-            <p>@User.Identity.Name</p>
-            <span>Пользователь</span>
-        </div>
 
         <nav>
             <a asp-action="Profile">🏠 Главная</a>
@@ -59,7 +52,7 @@
 
                         <div class="request-footer">
 
-                            <!-- если добавишь статус -->
+
                             <span class="status @item.Status.ToLower()">
                                 @item.Status
                             </span>

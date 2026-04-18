@@ -12,7 +12,8 @@ namespace WebApp_NextCore.Models
 
         [Required(ErrorMessage = "Введите описание")]
         public string Description { get; set; }
-        public string Technologies { get; set; } // Используемые технологии (C#, .NET, SQL Server и т.д.)
+        public string Technologies { get; set; } 
+
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
     }

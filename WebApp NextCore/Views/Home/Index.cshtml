@@ -2,66 +2,97 @@
     ViewData["Title"] = "Главная";
 }
 <link href="~/css/MainPage.css" rel="stylesheet" />
-<div class="hero-modern">
 
-    <div class="hero-left">
-        <h1>
-            Разрабатываем <br />
-            цифровые продукты <br />
-            для бизнеса
-        </h1>
+<!-- HERO -->
+<section class="corp-hero">
+    <div class="corp-container">
 
-        <p>
-            Веб-приложения, API и системы,
-            которые реально решают задачи
-        </p>
+        <div class="corp-hero-text">
+            <h1>IT-решения для бизнеса</h1>
+            <p>
+                Разработка, интеграция и сопровождение информационных систем
+                для повышения эффективности вашей компании
+            </p>
 
-        <div class="hero-buttons">
-            <a asp-controller="Home" asp-action="Contact" class="btn-main">
-                Начать проект
-            </a>
-
-            <a asp-controller="Portfolio" asp-action="Index" class="btn-outline">
-                Наши работы
-            </a>
+            <div class="corp-buttons">
+                <a asp-controller="Service" asp-action="Index" class="btn-primary">Услуги</a>
+                <a asp-controller="Home" asp-action="Contact" class="btn-secondary">Связаться</a>
+            </div>
         </div>
+
     </div>
-
-    <div class="hero-right">
-        <div class="hero-box"></div>
-        <div class="hero-box small"></div>
-    </div>
-
-</div>
-
-<!-- БЛОК ПРОСТО ТЕКСТ -->
-<div class="home-simple">
-    <h2>Мы создаём решения, а не просто сайты</h2>
-    <p>
-        Наша команда помогает бизнесу автоматизировать процессы,
-        улучшать пользовательский опыт и увеличивать прибыль
-    </p>
-</div>
+</section>
 
 <!-- УСЛУГИ -->
-<div class="services-modern">
+<section class="corp-section">
+    <div class="corp-container">
 
-    <div class="service-item">
-        <span>01</span>
-        <h3>Разработка</h3>
-        <p>Веб-приложения, API и backend системы</p>
+        <h2>Наши услуги</h2>
+
+        <div class="corp-grid">
+
+            <div class="corp-card">
+                <h3>Интеграционные сервисы</h3>
+                <p>Разработка API, CRM/ERP интеграции и микросервисы</p>
+            </div>
+
+            <div class="corp-card">
+                <h3>Консалтинг</h3>
+                <p>Аудит IT-инфраструктуры и стратегическое планирование</p>
+            </div>
+
+            <div class="corp-card">
+                <h3>Техническая поддержка</h3>
+                <p>Мониторинг, сопровождение и обслуживание систем</p>
+            </div>
+
+        </div>
+
     </div>
+</section>
 
-    <div class="service-item">
-        <span>02</span>
-        <h3>Интеграции</h3>
-        <p>CRM, ERP и автоматизация бизнеса</p>
+<!-- О КОМПАНИИ -->
+<section class="corp-about">
+    <div class="corp-container">
+
+        <h2>О компании</h2>
+
+        <p>
+            Мы помогаем бизнесу внедрять современные IT-решения,
+            автоматизировать процессы и повышать эффективность.
+        </p>
+
     </div>
+</section>
 
-    <div class="service-item">
-        <span>03</span>
-        <h3>Поддержка</h3>
-        <p>Мониторинг и сопровождение проектов</p>
+
+<section class="corp-section">
+    <div class="corp-container">
+
+        <h2>Реализованные проекты</h2>
+
+        <div class="cases-grid">
+
+            @foreach (var project in Model)
+    {
+        <div class="case-card">
+            <h3>@project.Title</h3>
+
+
+            <a asp-controller="Portfolio"
+               asp-action="Details"
+               asp-route-id="@project.Id"
+               class="btn-primary mt-2">
+                Подробнее
+            </a>
+        </div>
+    }
+
+        </div>
+
+        <div class="cases-btn">
+            <a href="/Portfolio" class="btn-primary">Все проекты</a>
+        </div>
+
     </div>
-
-</div>
+</section>

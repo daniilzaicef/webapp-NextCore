@@ -40,9 +40,9 @@ public class AccountController : Controller
 
             if (result.Succeeded)
             {
-                await _signInManager.SignInAsync(user, isPersistent: false);
-
                 await _userManager.AddToRoleAsync(user, "User");
+
+                await _signInManager.SignInAsync(user, isPersistent: false);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -68,9 +68,9 @@ public class AccountController : Controller
         if (ModelState.IsValid)
         {
             var result = await _signInManager.PasswordSignInAsync(
-                model.Email, 
-                model.Password, 
-                isPersistent: false, 
+                model.Email,
+                model.Password,
+                isPersistent: false,
                 lockoutOnFailure: false);
 
             if (result.Succeeded)
@@ -102,7 +102,7 @@ public class AccountController : Controller
             .ToList();
         return View(requests);
     }
-    
+
 
     [HttpGet]
     public async Task<IActionResult> Profile()
@@ -112,7 +112,7 @@ public class AccountController : Controller
     }
 
 
-    public async Task<IActionResult>EditProfile()
+    public async Task<IActionResult> EditProfile()
     {
         var user = await _userManager.GetUserAsync(User);
         return View(user);
@@ -132,7 +132,7 @@ public class AccountController : Controller
         user.PhoneNumber = model.PhoneNumber;
         user.About = model.About;
 
-        if(avatar != null && avatar.Length > 0)
+        if (avatar != null && avatar.Length > 0)
         {
             var fileName = Guid.NewGuid().ToString() + Path.GetExtension(avatar.FileName);
 

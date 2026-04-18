@@ -17,8 +17,8 @@
 
 /* Карточка */
 .portfolio-card {
-    background: linear-gradient(135deg, #1e1e2f, #2c2c54);
-    color: white;
+    background: #1D2227;
+    color: #FFFFFF;
     padding: 25px;
     border-radius: 20px;
     position: relative;
@@ -65,92 +65,74 @@
     }
 
 /*Details*/
-/* HERO */
-.project-hero {
-    text-align: center;
-    padding: 100px 20px 40px;
-}
-
-.project-hero h1 {
-    font-size: 42px;
-    font-weight: 700;
-}
-
-.project-subtitle {
-    color: #666;
-    max-width: 600px;
-    margin: 10px auto;
-}
-
-/* ТЕХНОЛОГИИ */
-.project-tech {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-}
-
-.tech-tag {
-    background: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    margin: 5px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    transition: 0.3s;
-}
-
-.tech-tag:hover {
-    transform: translateY(-3px);
-    background: #1e1e2f;
-    color: white;
-}
-
-/* КОНТЕНТ */
+/* Контейнер */
 .project-container {
-    max-width: 850px;
-    margin: auto;
+    max-width: 1100px;
+    margin: 40px auto;
     padding: 20px;
 }
 
-/* БЛОКИ */
-.project-block {
+/* Заголовок */
+.project-header {
+    margin-bottom: 30px;
+}
+
+    .project-header h1 {
+        font-size: 32px;
+    }
+
+.project-sub {
+    color: #777;
+}
+
+/* Основной блок */
+.project-main {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Контент */
+.project-content {
+    flex: 2;
     background: white;
     padding: 25px;
-    border-radius: 18px;
-    margin-bottom: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
-    transition: 0.3s;
-}
-
-.project-block:hover {
-    transform: translateY(-5px);
-}
-
-/* ЗАГОЛОВКИ */
-.project-block h2 {
-    margin-bottom: 10px;
-}
-
-/* ТЕКСТ */
-.project-block p {
-    color: #555;
+    border-radius: 12px;
+    border: 1px solid #eee;
     line-height: 1.7;
 }
 
-/* ВЫДЕЛЕННЫЙ БЛОК */
-.project-block.highlight {
-    background: linear-gradient(135deg, #1e1e2f, #34345c);
-    color: white;
+/* Sidebar */
+.project-sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.project-block.highlight p {
-    color: #ddd;
+/* Карточки */
+.sidebar-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #eee;
 }
 
-/* КНОПКА */
-.back-btn {
+/* Технологии */
+.tech {
     display: inline-block;
-    margin-top: 20px;
+    background: #4e73df;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin: 5px 5px 0 0;
+    font-size: 13px;
+}
+
+/* Кнопка */
+.btn-back {
+    display: inline-block;
+    margin-top: 30px;
     text-decoration: none;
-    color: #1e1e2f;
-    font-weight: bold;
+    color: #4e73df;
 }

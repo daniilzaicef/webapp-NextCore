@@ -15,7 +15,12 @@ namespace WebApp_NextCore.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var projects = _context.Projects
+                .OrderByDescending(p => p.Id)
+                .Take(3)
+                .ToList();
+
+            return View(projects);
         }
 
 
@@ -48,6 +53,11 @@ namespace WebApp_NextCore.Controllers
         public IActionResult PageNotFound()
         {
             return View("NotFound");
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
         }
     }
 }

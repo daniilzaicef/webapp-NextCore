@@ -2,40 +2,180 @@
     ViewData["Title"] = "О нас";
 }
 <link href="~/css/About.css" rel="stylesheet" />
-<div class="about-hero">
-    <h1>О нашей компании</h1>
-    <p>Мы создаём современные IT-решения для бизнеса</p>
-</div>
 
-<div class="about-container">
+<!-- HERO -->
+<section class="about-hero">
+    <div class="corp-container">
 
-    <!-- О нас -->
-    <div class="about-section">
-        <h2>Кто мы</h2>
-        <p>
-            NexusCore Solution — IT-компания, специализирующаяся на интеграционных сервисах, 
-            аутсорсинге и технической поддержке. 
-            Мы помогаем бизнесу внедрять современные цифровые решения.
+        <h1>NexusCore Solution</h1>
+        <p class="hero-sub">
+            Разрабатываем цифровые решения, которые двигают бизнес вперед
         </p>
-    </div>
 
-    <!-- Преимущества -->
-    <div class="about-features">
-
-        <div class="feature-card">
-            <h3>🚀 Быстрая разработка</h3>
-            <p>Современные технологии позволяют нам запускать проекты быстро</p>
-        </div>
-
-        <div class="feature-card">
-            <h3>🔒 Надёжность</h3>
-            <p>Мы создаём стабильные и безопасные решения</p>
-        </div>
-
-        <div class="feature-card">
-            <h3>💡 Индивидуальный подход</h3>
-            <p>Каждый проект уникален — мы учитываем это</p>
+        <div class="hero-badge">
+            Аутсорсинг • Интеграции • Поддержка
         </div>
 
     </div>
-</div>
+</section>
+
+<!-- О КОМПАНИИ -->
+<section class="about-section">
+    <div class="corp-container about-split">
+
+        <div class="about-text">
+            <h2>Кто мы</h2>
+
+            <p>
+                NexusCore Solution — команда разработчиков и инженеров,
+                создающая современные IT-продукты для бизнеса.
+            </p>
+
+            <p>
+                Мы специализируемся на разработке веб-систем,
+                интеграции сервисов и автоматизации процессов.
+            </p>
+
+            <div class="about-highlight">
+                Помогаем компаниям снижать затраты и ускорять рост
+                с помощью технологий
+            </div>
+        </div>
+
+        <div class="about-box">
+            <h3>Наш подход</h3>
+
+            <div class="mini-item">✔ Архитектура под масштаб</div>
+            <div class="mini-item">✔ Чистый и поддерживаемый код</div>
+            <div class="mini-item">✔ Долгосрочная поддержка</div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ЦИФРЫ -->
+<section class="about-stats">
+    <div class="corp-container stats-grid">
+
+        <div class="stat-card">
+            <h2>10+</h2>
+            <span>Проектов</span>
+        </div>
+
+        <div class="stat-card">
+            <h2>5+</h2>
+            <span>Лет опыта</span>
+        </div>
+
+        <div class="stat-card">
+            <h2>24/7</h2>
+            <span>Поддержка</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- ПРЕИМУЩЕСТВА -->
+<section class="about-section">
+    <div class="corp-container">
+
+        <h2 class="center">Почему выбирают нас</h2>
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <h3>Системный подход</h3>
+                <p>Решаем задачи комплексно, а не точечно</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Технологии</h3>
+                <p>.NET, Cloud, современные архитектуры</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Скорость</h3>
+                <p>Быстро запускаем проекты без потери качества</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="about-section tech-section">
+    <div class="corp-container">
+
+        <h2 class="center">Наши технологии</h2>
+        <p class="tech-sub center">
+            Используем современные инструменты для создания надежных решений
+        </p>
+
+        <div class="tech-grid">
+
+            <div class="tech-card">
+                <h3>.NET / ASP.NET Core</h3>
+                <p>Надежная backend-разработка</p>
+            </div>
+
+            <div class="tech-card">
+                <h3>SQL Server</h3>
+                <p>Проектирование и оптимизация БД</p>
+            </div>
+
+            <div class="tech-card">
+                <h3>Cloud</h3>
+                <p>Облачные решения и масштабирование</p>
+            </div>
+
+            <div class="tech-card">
+                <h3>DevOps-практики</h3>
+                <p>
+                    Методологии CI/CD для автоматизации разработки и внедрения обновлений.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="about-section team-section">
+    <div class="corp-container">
+
+        <h2 class="center">Наша команда</h2>
+        <p class="team-sub center">
+            Профессионалы, которые создают решения для вашего бизнеса
+        </p>
+
+        <div class="team-grid">
+
+            <div class="team-card">
+                <img src="~/images/team/Ivan.jpg" class="team-img" />
+                <h3>Иван Иванов</h3>
+                <span>Backend Developer</span>
+            </div>
+
+            <div class="team-card">
+                <img src="~/images/team/Alina.jpg" class="team-img" />
+                <h3>Анна Смирнова</h3>
+                <span>Frontend Developer</span>
+            </div>
+
+            <div class="team-card">
+                <img src="~/images/team/Alexay.jpg" class="team-img" />
+                <h3>Алексей Петров</h3>
+                <span>DevOps Engineer</span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="about-cta">
+    <div class="corp-container">
+        <h2>Обсудим ваш проект?</h2>
+        <p>Оставьте заявку — мы предложим решение</p>
+    </div>
+</section>

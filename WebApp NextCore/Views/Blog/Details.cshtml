@@ -1,4 +1,5 @@
 ﻿@model BlogPost
+@using Markdig
 
 <link href="~/css/Blog.css" rel="stylesheet" />
 
@@ -13,7 +14,7 @@
     </p>
 
     <p class="details-content">
-        @Model.Content
+        @Html.Raw(Markdown.ToHtml(Model.Content))
     </p>
 
     <a asp-action="Index" class="back-btn">← Назад</a>

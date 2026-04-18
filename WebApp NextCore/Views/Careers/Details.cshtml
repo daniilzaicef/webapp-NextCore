@@ -1,4 +1,5 @@
 ﻿@model VacancyModel
+@using Markdig
 
 <link href="~/css/Vacancy.css" rel="stylesheet" />
 
@@ -13,17 +14,17 @@
 
         <div class="vacancy-block">
             <h3>📄 Описание</h3>
-            <p>@Model.Description</p>
+            @Html.Raw(Markdown.ToHtml(Model.Description))
         </div>
 
         <div class="vacancy-block">
             <h3>✅ Требования</h3>
-            <p>@Model.Requirements</p>
+            @Html.Raw(Markdown.ToHtml(Model.Requirements))
         </div>
 
         <div class="vacancy-block">
             <h3>📌 Обязанности</h3>
-            <p>@Model.Responsibilities</p>
+            @Html.Raw(Markdown.ToHtml(Model.Responsibilities))
         </div>
     </div>
 

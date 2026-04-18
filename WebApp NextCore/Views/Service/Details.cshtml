@@ -1,5 +1,5 @@
 ﻿@model WebApp_NextCore.Models.ServiceModel
-
+@using Markdig
 @{
     ViewData["Title"] = Model.Title;
 }
@@ -22,7 +22,7 @@
         <div class="mt-4">
             <h4>Подробное описание</h4>
             <p>
-                @Model.FullDescription
+                @Html.Raw(Markdown.ToHtml(Model.FullDescription))
             </p>
         </div>
 

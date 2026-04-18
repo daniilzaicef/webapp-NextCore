@@ -1,28 +1,48 @@
 ﻿@model ProjectModel
+@using Markdig
 
 <link href="~/css/Portfolio.css" rel="stylesheet" />
 
-<div>
+<div class="project-container">
 
-    <div class="project-hero">
+    <!-- Заголовок -->
+    <div class="project-header">
         <h1>@Model.Title</h1>
+        <p class="project-sub">
+            Реализованный проект компании NexusCore Solution
+        </p>
     </div>
 
-    <!-- технологии -->
-    <div class="project-tech">
-        <div class="tech-list">
-            <h3>Стек Технологий</h3>
-            <p>@Model.Technologies</p>
-        </div>
-    </div>
+    <!-- Основной блок -->
+    <div class="project-main">
 
-    <div class="project-container">
-        <div class="project-block">
-            <p>@Model.Description</p>
+        <!-- Описание -->
+        <div class="project-content">
+            @Html.Raw(Markdown.ToHtml(Model.Description))
         </div>
 
-        <a asp-action="Index" class="back-btn">← Назад</a>
+        <!-- Боковая панель -->
+        <div class="project-sidebar">
+
+            <div class="sidebar-card">
+                <h4>Технологии</h4>
+
+                @if (!string.IsNullOrEmpty(Model.Technologies))
+                {
+                    var techList = Model.Technologies.Split(',');
+                    foreach (var tech in techList)
+                    {
+                        <span class="tech">@tech.Trim()</span>
+                    }
+                }
+            </div>
+
+
+        </div>
 
     </div>
+
+    <!-- Кнопка назад -->
+    <a asp-action="Index" class="btn-back">← Назад к портфолио</a>
 
 </div>
