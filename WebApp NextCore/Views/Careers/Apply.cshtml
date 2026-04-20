@@ -1,31 +1,33 @@
 ﻿@using WebApp_NextCore.ViewModel
 @model VacancyResponseViewModel
 
-<h2 class="mb-3">Отклик на вакансию: <span class="text-primary">@Model.VacancyTitle</span></h2>
+<link href="~/css/Vacancy.css" rel="stylesheet" />
+<div class="apply-container">
 
-<div class="card shadow p-4">
-    <form asp-action="Apply" method="post">
+    <h2>Отклик на вакансию:</h2>
+    <h3>@Model.VacancyTitle</h3>
+
+    <form method="post" enctype="multipart/form-data">
 
         <input type="hidden" asp-for="VacancyTitle" />
 
-        <div class="mb-3">
-            <label class="form-label">ФИО</label>
+        <div class="form-group">
+            <label>ФИО</label>
             <input asp-for="FullName" class="form-control" />
-            <span asp-validation-for="FullName" class="text-danger"></span>
         </div>
 
-        <div class="mb-3">
-            <label class="form-label">Email</label>
+        <div class="form-group">
+            <label>Email</label>
             <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
 
-        <div class="mb-3">
-            <label class="form-label">Сообщение</label>
-            <textarea asp-for="Message" class="form-control" rows="4"></textarea>
-            <span asp-validation-for="Message" class="text-danger"></span>
+        <div class="form-group">
+            <label>Сообщение</label>
+            <textarea asp-for="Message" class="form-control"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-success">Отправить отклик</button>
+        <button class="btn-primary">Отправить</button>
+
     </form>
+
 </div>

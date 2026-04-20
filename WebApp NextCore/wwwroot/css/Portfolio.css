@@ -17,14 +17,19 @@
 
 /* Карточка */
 .portfolio-card {
-    background: #1D2227;
-    color: #FFFFFF;
+    background: #FFFFFF;
+    color: #000000;
     padding: 25px;
-    border-radius: 20px;
+    border-radius: 12px;
     position: relative;
-    overflow: hidden;
-    transition: 0.3s;
+    border: 1px solid #eee;
+    transition: 0.25s;
 }
+    .portfolio-card:hover {
+        transform: translateY(-4px);
+        border-color: #ddd;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
 
 /* Контент */
 .portfolio-content {
@@ -53,15 +58,14 @@
 .portfolio-btn {
     display: inline-block;
     margin-top: 15px;
-    color: white;
+    color: #000000;
     text-decoration: none;
     border-bottom: 1px solid white;
     transition: 0.3s;
 }
 
     .portfolio-btn:hover {
-        color: #ddd;
-        border-color: #ddd;
+        color: #000000;
     }
 
 /*Details*/

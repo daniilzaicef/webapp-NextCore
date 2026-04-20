@@ -72,3 +72,80 @@ h4 {
     text-decoration: none;
     color: #4e73df;
 }
+
+/* HERO */
+.careers-title {
+    text-align: center;
+    margin: 30px 0;
+}
+
+/* Сетка */
+.vacancy-grid {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+/* Карточка */
+.vacancy-card {
+    flex: 1;
+    min-width: 280px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+    .vacancy-card:hover {
+        transform: translateY(-5px);
+    }
+
+/*Кнопки*/
+.btn-primary {
+    margin-right: 20px;
+}
+
+.vacancy-short {
+    color: #666;
+    margin: 15px 0;
+}
+
+.vacancy-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.apply-container {
+    max-width: 600px;
+    margin: 100px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* Кнопка */
+.btn-primary {
+    background: #4e73df;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+}

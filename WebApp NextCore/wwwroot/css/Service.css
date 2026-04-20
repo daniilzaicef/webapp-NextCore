@@ -36,3 +36,47 @@
         color: #fff;
         border-radius: 0 10px 10px 0;
     }
+
+.services-grid-clean {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+/* Карточка */
+.service-card-accent {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    position: relative;
+    transition: 0.25s;
+}
+
+/* Текст */
+.service-card-accent h3 {
+    margin-bottom: 10px;
+}
+
+.service-card-accent p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* Ссылка */
+.service-link {
+    text-decoration: none;
+    color: #4e73df;
+    font-weight: 500;
+}
+
+
+/* Hover */
+.service-card-accent:hover {
+    transform: translateY(-4px);
+    border-color: #ddd;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+

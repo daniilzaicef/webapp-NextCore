@@ -21,40 +21,22 @@
     </form>
 
     <!-- Карточки -->
-    <div class="row g-4">
+    <div class="services-grid-clean">
 
         @foreach (var service in Model)
         {
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm service-card">
+            <div class="service-card-accent">
 
-                    <div class="card-body text-center">
+                <h3>@service.Title</h3>
 
-                        <!-- Иконка -->
-                        <div class="mb-3">
-                            <i class="bi bi-gear-fill display-5 text-primary"></i>
-                        </div>
+                <p>@service.Description</p>
 
-                        <!-- Название -->
-                        <h5 class="card-title fw-bold">
-                            @service.Title
-                        </h5>
+                <a asp-action="Details"
+                   asp-route-id="@service.Id"
+                   class="service-link">
+                    Подробнее →
+                </a>
 
-                        <!-- Описание -->
-                        <p class="card-text text-muted">
-                            @service.Description
-                        </p>
-
-                        <!--Подробное описание-->
-                        <a asp-action="Details"
-                           asp-route-id="@service.Id"
-                           class="btn btn-outline-primary mt-3">
-                            Подробнее
-                        </a>
-
-                    </div>
-
-                </div>
             </div>
         }
 
