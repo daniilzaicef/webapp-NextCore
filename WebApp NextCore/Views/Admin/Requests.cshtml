@@ -4,13 +4,14 @@
     ViewData["Title"] = "Заявки";
 }
 <link href="~/css/AdminRequest.css" rel="stylesheet" />
+<link href="~/css/Admin.css" rel="stylesheet" />
 <script src="/js/UpdateStatus.js"></script>
-<div class="container mt-5">
+<div class="table-wrapper">
 
-    <h2 class="mb-4">Заявки пользователей</h2>
+    <h2>Заявки пользователей</h2>
 
-    <table class="table table-bordered table-hover shadow">
-        <thead class="table-dark">
+    <table class="custom-table">
+        <thead>
             <tr>
                 <th>Имя</th>
                 <th>Email</th>
@@ -27,10 +28,10 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.Name</td>
-                    <td>@item.Email</td>
+                    <td class="title-cell">@item.Name</td>
+                    <td class="title-cell">@item.Email</td>
                     <td>@item.Service?.Title</td>
-                    <td>@item.Message</td>
+                    <td class="desc-cell">@item.Message</td>
                     <td>@item.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
                     <td>
                         <span id="status-@item.Id" class="status @item.Status.ToLower()">
@@ -49,18 +50,15 @@
                             Завершить
                         </button>
                     </td>
+
                     <td>
-                        <form asp-action="DeleteRequest" method="post">
-                            <input type="hidden" name="id" value="@item.Id" />
-                            <button class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Удалить заявку?')">
-                                Удалить
-                            </button>
-                        </form>
+                        <a asp-action="DeleteRequest" asp-route-id="@item.Id"
+                           onclick="return confirm('Удалить проект?')"
+                           class="btn-table delete">
+                            Удалить
+                        </a>
                     </td>
                 </tr>
-                @* Кнопка удлаить добавь потом *@
-                
             }
         </tbody>
     </table>

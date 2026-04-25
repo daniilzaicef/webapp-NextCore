@@ -1,0 +1,143 @@
+﻿body {
+}
+
+.admin-card {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.admin-title {
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.custom-input {
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    transition: 0.2s;
+}
+.custom-input:focus {
+    border-color: #4f6df5;
+    box-shadow: 0 0 0 2px rgba(79,109,245,0.1);
+}
+
+/* Предпросмотр */
+.image-preview {
+    margin-top: 15px;
+    text-align: center;
+}
+
+    .image-preview img {
+        max-width: 50%;
+        max-height: 220px;
+        border-radius: 12px;
+        display: none;
+        position: relative;
+        top: -10px;
+
+    }
+
+/*Главная*/
+.table-wrapper {
+    max-width: 1100px;
+    margin: 40px auto;
+    position: relative;
+    top: -30px;
+}
+
+/* Таблица */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+    /* Header */
+    .custom-table thead {
+        background: #1F2326;
+    }
+
+    .custom-table th {
+        text-align: left;
+        padding: 14px;
+        font-weight: 600;
+        color: white;
+        font-size: 14px;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Строки */
+    .custom-table td {
+        padding: 16px 14px;
+        border-bottom: 1px solid #f1f1f1;
+        vertical-align: middle;
+    }
+
+    /* Hover */
+    .custom-table tbody tr:hover {
+        background: #f5f7ff;
+        transition: 0.2s;
+    }
+
+/* Название */
+.title-cell {
+    font-weight: 600;
+    color: #222;
+}
+
+/* Описание */
+.desc-cell {
+    color: #666;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Действия */
+.actions-cell {
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Кнопки */
+.btn-table {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    text-decoration: none;
+    margin-left: 6px;
+    transition: 0.2s;
+}
+
+    /* Edit */
+    .btn-table.edit {
+        background: #eef2ff;
+        color: #3f51b5;
+    }
+
+        .btn-table.edit:hover {
+            background: #dfe5ff;
+        }
+
+    /* Delete */
+    .btn-table.delete {
+        background: #fff1f1;
+        color: #d32f2f;
+    }
+
+        .btn-table.delete:hover {
+            background: #ffe4e4;
+        }

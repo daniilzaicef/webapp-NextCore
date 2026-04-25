@@ -2,7 +2,7 @@
 
 namespace WebApp_NextCore.Models
 {
-    //Портфолио/Кейсы
+    //Портфолио
     public class ProjectModel
     {
         public int Id { get; set; }
@@ -12,6 +12,8 @@ namespace WebApp_NextCore.Models
 
         [Required(ErrorMessage = "Введите описание")]
         public string Description { get; set; }
+
+        [Required(ErrorMessage ="Введите использованные технологии")]
         public string Technologies { get; set; } 
         public string? ImagePath { get; set; }
 

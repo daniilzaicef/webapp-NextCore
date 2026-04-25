@@ -18,8 +18,8 @@ namespace WebApp_NextCore.Models
         [Required(ErrorMessage ="Введите Сообщение")]
         public string Message { get; set; }
 
-        public string UseId {  get; set; }
-        public ApplicationUser User { get; set; }
+        public string? UseId {  get; set; }
+        public ApplicationUser? User { get; set; }
 
         // Связь с услугой
         public int ServiceId { get; set; }

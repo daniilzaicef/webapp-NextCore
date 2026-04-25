@@ -367,8 +367,6 @@ namespace WebApp_NextCore.Controllers
             return View(requests);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult DeleteRequest(int id)
         {
             var request = _context.ServiceRequests.Find(id);
@@ -379,7 +377,7 @@ namespace WebApp_NextCore.Controllers
                 _context.SaveChanges();
             }
 
-            return RedirectToAction("Requests");
+            return RedirectToAction(nameof(Requests));
         }
 
         [HttpPost]

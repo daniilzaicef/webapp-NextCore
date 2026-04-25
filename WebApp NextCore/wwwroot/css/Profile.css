@@ -127,7 +127,10 @@
 
 /* Message */
 .message {
-    margin: 15px 0;
+    max-width: 1000px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: #555;
 }
 

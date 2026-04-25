@@ -1,31 +1,59 @@
 ﻿@model ProjectModel
 
-<h2>Редактировать проект</h2>
+<link href="~/css/Admin.css" rel="stylesheet" /> 
 
 <form asp-action="EditProject" method="post" enctype="multipart/form-data">
+
     <input type="hidden" asp-for="Id" />
-    <div class="card p-4 mb-4 shadow-sm">
-        <div class="mb-3">
+
+    <div class="admin-card">
+
+        <h2 class="admin-title">Редактировать проект</h2>
+
+        <div class="form-group">
             <label>Название</label>
-            <input asp-for="Title" class="form-control" />
+            <input asp-for="Title" class="form-control input-group" />
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Описание</label>
-            <textarea asp-for="Description" class="form-control"></textarea>
+            <textarea asp-for="Description" class="form-control input-group"></textarea>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Технологии</label>
-            <input asp-for="Technologies" class="form-control" />
+            <input asp-for="Technologies" class="form-control input-group" />
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Картинка</label>
-            <input type="file" name="image" class="form-control" />
+            <input type="file" name="image" class="form-control input-group" id="imageInput" />
         </div>
-    </div>
 
-    <button class="btn btn-outline-primary">Сохранить</button>
-    <a asp-action="Projects" class="btn btn-outline-primary">Назад</a>
+        <!-- Предпросмотр -->
+        <div class="image-preview">
+            <img id="previewImage" />
+        </div>
+
+    <button class="btn btn-success">Сохранить</button>
+    <a asp-action="Projects" class="btn btn-secondary">Назад</a>
+    </div>
 </form>
+
+<script>
+    document.getElementById("imageInput").addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        const preview = document.getElementById("previewImage");
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                preview.src = event.target.result;
+                preview.style.display = "block";
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

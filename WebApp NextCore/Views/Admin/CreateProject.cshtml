@@ -1,31 +1,58 @@
 ﻿@model ProjectModel
 
-<h2>Создание проектов</h2>
+<link href="~/css/Admin.css" rel="stylesheet" />
 
 <form asp-action="CreateProject" method="post" enctype="multipart/form-data">
-    <div class="card p-4 mb-4 shadow-sm">
-        <div class="mb-3">
+
+    <div class="admin-card">
+        <h2 class="admin-title" >Создание проектов</h2>
+
+        <div class="form-group">
             <label>Название</label>
-            <input asp-for="Title" class="form-control" />
+            <input asp-for="Title" class="form-control custom-input" placeholder="Введите название проекта"/>
             <span asp-validation-for="Title" class="text-danger"></span>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Описание</label>
-            <textarea asp-for="Description" class="form-control"></textarea>
+            <textarea asp-for="Description" class="form-control custom-input" placeholder="Введите описание"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Технологии</label>
-            <input asp-for="Technologies" class="form-control" />
+            <input asp-for="Technologies" class="form-control custom-input" placeholder="Введите технологии"/>
+            <span asp-validation-for="Technologies" class="text-danger"></span>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Картинка</label>
-            <input type="file" name="image" class="form-control" />
+            <input type="file" name="image" class="form-control custom-input" id="imageInput"/>
         </div>
-    </div>
 
-    <button class="btn btn-outline-success">Сохранить</button>
-    <a asp-action="Projects" class="btn btn-outline-success">Назад</a>
+        <div class="image-preview">
+            <img id="previewImage" />
+        </div>
+
+    <button class="btn btn-success">Сохранить</button>
+    <a asp-action="Projects" class="btn btn-secondary">Назад</a>
+    </div>
 </form>
+
+<script>
+    document.getElementById("imageInput").addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        const preview = document.getElementById("previewImage");
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                preview.src = event.target.result;
+                preview.style.display = "block";
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

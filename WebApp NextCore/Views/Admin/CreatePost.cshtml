@@ -1,30 +1,59 @@
 ﻿@model BlogPost
 
-<h2>Добавить статью</h2>
 
+<link href="~/css/Admin.css" rel="stylesheet" />
 <form asp-action="CreatePost" method="post" enctype="multipart/form-data">
-    <div class="card p-4 mb-4 shadow-sm">
-        <div class="mb-3">
+
+    <div class="admin-card">
+
+        <h2 class="admin-title">Добавить статью</h2>
+
+        <div class="form-group">
             <label>Заголовок</label>
-            <input asp-for="Title" class="form-control" />
+            <input asp-for="Title" class="form-control custom-input" placeholder="Введите заголовок"/>
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Краткое описание</label>
-            <textarea asp-for="ShortDescription" class="form-control"></textarea>
+            <textarea asp-for="ShortDescription" class="form-control custom-input" placeholder="Введите краткое описание"></textarea>
+            <span asp-validation-for="ShortDescription" class="text-danger"></span>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Содержание</label>
-            <textarea asp-for="Content" class="form-control" rows="6"></textarea>
+            <textarea asp-for="Content" class="form-control custom-input" rows="6" placeholder="Введите содержание"></textarea>
+            <span asp-validation-for="Content" class="text-danger"></span>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group">
             <label>Картинка</label>
-            <input type="file" name="image" class="form-control" />
+            <input type="file" name="image" class="form-control custom-input" id="imageInput" />
         </div>
-    </div>
 
+        <div class="image-preview">
+            <img id="previewImage" />
+        </div>
+    
     <button class="btn btn-success">Сохранить</button>
-
+    <a asp-action="Blog" class="btn btn-secondary">Назад</a>
+    </div>
 </form>
+
+<script>
+    document.getElementById("imageInput").addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        const preview = document.getElementById("previewImage");
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                preview.src = event.target.result;
+                preview.style.display = "block";
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
