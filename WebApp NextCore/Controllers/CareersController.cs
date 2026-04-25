@@ -47,11 +47,11 @@ namespace WebApp_NextCore.Controllers
                     VacancyTitle = model.VacancyTitle,
                     CreatedAt = DateTime.Now
                 };
-
                 _context.VacancyResponses.Add(response);
                 _context.SaveChanges();
                 return RedirectToAction("Thanks");
             }
+
 
             return View(model);
         }

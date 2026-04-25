@@ -2,7 +2,7 @@
 
 <h2>Создание проектов</h2>
 
-<form asp-action="CreateProject" method="post">
+<form asp-action="CreateProject" method="post" enctype="multipart/form-data">
     <div class="card p-4 mb-4 shadow-sm">
         <div class="mb-3">
             <label>Название</label>
@@ -19,7 +19,13 @@
             <label>Технологии</label>
             <input asp-for="Technologies" class="form-control" />
         </div>
+
+        <div class="mb-3">
+            <label>Картинка</label>
+            <input type="file" name="image" class="form-control" />
+        </div>
     </div>
 
-    <button class="btn btn-success">Сохранить</button>
+    <button class="btn btn-outline-success">Сохранить</button>
+    <a asp-action="Projects" class="btn btn-outline-success">Назад</a>
 </form>

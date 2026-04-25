@@ -39,10 +39,14 @@ namespace WebApp_NextCore.Controllers
             model.UseId = user.Id;
             model.CreatedAt = DateTime.Now;
 
-            _context.ServiceRequests.Add(model);
-            await _context.SaveChangesAsync();
+            if (ModelState.IsValid)
+            {
+                _context.ServiceRequests.Add(model);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index", "Service");
+            }
 
-            return RedirectToAction("Index", "Service");
+            return View(new ServiceRequest());
         }
     }
 }

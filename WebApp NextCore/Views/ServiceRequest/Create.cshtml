@@ -3,9 +3,10 @@
 @{
     ViewData["Title"] = "Заявка";
 }
+<link href="~/css/ServiceRequest.css" rel="stylesheet" />
 
-<div class="container mt-5">
-    <div class="card shadow p-4">
+<div class="request-container">
+    <div class="request-content">
 
         <h2 class="mb-4 text-center">Оставить заявку</h2>
 
@@ -13,24 +14,28 @@
 
             <input type="hidden" asp-for="ServiceId" />
 
-            <div class="mb-3">
+            <div class="form-group">
                 <label>Ваше имя</label>
                 <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name"></span>
             </div>
 
-            <div class="mb-3">
+            <div class="form-group">
                 <label>Email</label>
                 <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email"></span>
             </div>
 
-            <div class="mb-3">
+            <div class="form-group">
                 <label>Сообщение</label>
                 <textarea asp-for="Message" class="form-control"></textarea>
+                <span asp-validation-for="Message"></span>
             </div>
 
-            <button type="submit" class="btn btn-success w-100">
+            <button type="submit" class="btn btn-outline-success">
                 Отправить заявку
             </button>
+            <a asp-action="Index" asp-controller="Service" class="btn btn-outline-success">Назад</a>
         </form>
     </div>
 </div>

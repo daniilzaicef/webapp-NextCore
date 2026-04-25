@@ -140,3 +140,11 @@
     text-decoration: none;
     color: #4e73df;
 }
+
+/*Картинка*/
+.project-img {
+    width: 67%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+}

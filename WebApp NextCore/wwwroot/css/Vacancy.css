@@ -120,6 +120,7 @@ h4 {
     margin-bottom: 15px;
 }
 
+/*Apply*/
 .apply-container {
     max-width: 600px;
     margin: 100px auto;
@@ -132,6 +133,10 @@ h4 {
 .form-group {
     margin-bottom: 15px;
 }
+
+    .form-group span {
+        color: red;
+    }
 
 .form-control {
     width: 100%;

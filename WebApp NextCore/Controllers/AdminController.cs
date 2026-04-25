@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using WebApp_NextCore.Data;
 using WebApp_NextCore.Models;
 using static System.Net.Mime.MediaTypeNames;
@@ -32,7 +33,7 @@ namespace WebApp_NextCore.Controllers
         [HttpPost]
         public IActionResult Create(VacancyModel vacancy)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _context.Vacancy.Add(vacancy);
                 _context.SaveChanges();
@@ -71,7 +72,7 @@ namespace WebApp_NextCore.Controllers
         }
 
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Response()
         {
             var responses = _context.VacancyResponses
@@ -81,7 +82,7 @@ namespace WebApp_NextCore.Controllers
             return View(responses);
         }
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteResponse(int id)
         {
             var response = _context.VacancyResponses.Find(id);
@@ -93,27 +94,41 @@ namespace WebApp_NextCore.Controllers
             return RedirectToAction("Response");
         }
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Projects()
         {
             var projects = _context.Projects.ToList();
             return View(projects);
         }
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateProject()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles ="Admin")]
-        public IActionResult CreateProject(ProjectModel project)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> CreateProject(ProjectModel project, IFormFile image)
         {
-            if(ModelState.IsValid)
+            if (image != null)
+            {
+                var fileName = Guid.NewGuid() + Path.GetExtension(image.FileName);
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/Portfolio", fileName);
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await image.CopyToAsync(stream);
+                }
+
+                project.ImagePath = fileName;
+            }
+
+            if (ModelState.IsValid)
             {
                 _context.Projects.Add(project);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Projects));
             }
             return View(project);
@@ -128,12 +143,26 @@ namespace WebApp_NextCore.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public IActionResult EditProject(ProjectModel project)
+        public async Task<IActionResult> EditProject(ProjectModel project, IFormFile image)
         {
+            if (image != null)
+            {
+                var fileName = Guid.NewGuid() + Path.GetExtension(image.FileName);
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/Portfolio", fileName);
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await image.CopyToAsync(stream);
+                }
+
+                project.ImagePath = fileName;
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Projects.Update(project);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Projects));
             }
             return View(project);
@@ -148,27 +177,42 @@ namespace WebApp_NextCore.Controllers
             return RedirectToAction(nameof(Projects));
         }
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Service()
         {
             var services = _context.Services;
             return View(services);
         }
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult CreateService()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles ="Admin")]
-        public IActionResult CreateService(ServiceModel service)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> CreateService(ServiceModel service, IFormFile image)
         {
+            if (image != null)
+            {
+                var fileName = Guid.NewGuid() + Path.GetExtension(image.FileName);
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/service", fileName);
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await image.CopyToAsync(stream);
+                }
+
+                service.IamgePath = fileName;
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Services.Add(service);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Service));
             }
 
@@ -184,12 +228,26 @@ namespace WebApp_NextCore.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public IActionResult EditService(ServiceModel service)
+        public async Task<IActionResult> EditService(ServiceModel service, IFormFile image)
         {
+            if (image != null)
+            {
+                var fileName = Guid.NewGuid() + Path.GetExtension(image.FileName);
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/service", fileName);
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await image.CopyToAsync(stream);
+                }
+
+                service.IamgePath = fileName;
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Services.Update(service);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Service));
             }
 
@@ -210,11 +268,11 @@ namespace WebApp_NextCore.Controllers
             return RedirectToAction(nameof(Service));
         }
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Blog()
         {
             var posts = _context.BlogPosts
-                .OrderByDescending(x=>x.CreatedAt)
+                .OrderByDescending(x => x.CreatedAt)
                 .ToList();
 
             return View(posts);
@@ -237,7 +295,7 @@ namespace WebApp_NextCore.Controllers
                 {
                     var fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
 
-                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/blog", fileName);
 
                     using (var stream = new FileStream(path, FileMode.Create))
                     {

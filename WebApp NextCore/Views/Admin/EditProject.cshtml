@@ -2,7 +2,7 @@
 
 <h2>Редактировать проект</h2>
 
-<form asp-action="EditProject" method="post">
+<form asp-action="EditProject" method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="Id" />
     <div class="card p-4 mb-4 shadow-sm">
         <div class="mb-3">
@@ -19,7 +19,13 @@
             <label>Технологии</label>
             <input asp-for="Technologies" class="form-control" />
         </div>
+
+        <div class="mb-3">
+            <label>Картинка</label>
+            <input type="file" name="image" class="form-control" />
+        </div>
     </div>
 
     <button class="btn btn-outline-primary">Сохранить</button>
+    <a asp-action="Projects" class="btn btn-outline-primary">Назад</a>
 </form>

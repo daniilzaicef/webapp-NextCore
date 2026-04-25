@@ -48,7 +48,7 @@ public class AccountController : Controller
             }
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError(string.Empty, error.Description);
+                ModelState.AddModelError("", "В пароле должен быть хотя бы один не буквенно-цифровой символ");
             }
         }
 

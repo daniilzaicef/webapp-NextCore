@@ -13,7 +13,7 @@ namespace WebApp_NextCore.Models
         [Required(ErrorMessage = "Введите описание")]
         public string Description { get; set; }
         public string Technologies { get; set; } 
-
+        public string? ImagePath { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
     }

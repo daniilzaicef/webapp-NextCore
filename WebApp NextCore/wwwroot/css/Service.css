@@ -68,7 +68,7 @@
 /* Ссылка */
 .service-link {
     text-decoration: none;
-    color: #4e73df;
+    color: black;
     font-weight: 500;
 }
 
@@ -78,5 +78,51 @@
     transform: translateY(-4px);
     border-color: #ddd;
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+/*Details*/
+/*Картинка*/
+.service-image img {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    position: relative;
+    top: 35px
+}
+
+.service-details-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    position: relative;
+    top: -35px
+}
+
+/* Картинка */
+.service-image img {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+/* Контент */
+.service-content h1 {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Текст */
+.service-text {
+    line-height: 1.7;
+    color: #444;
+}
+
+/* Кнопка */
+.btn-back {
+    display: inline-block;
+    margin-top: 25px;
+    text-decoration: none;
+    color: #4e73df;
 }
 

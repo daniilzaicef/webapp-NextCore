@@ -1,0 +1,25 @@
+﻿body {
+}
+
+.request-container {
+    max-width: 600px;
+    margin: 100px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+    .form-group span{
+        color: red;
+    }
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}

@@ -43,7 +43,6 @@
         font-weight: 500;
     }
 
-    /* Input */
     .form-group input,
     .form-group textarea {
         width: 100%;
@@ -53,7 +52,6 @@
         transition: 0.3s;
     }
 
-        /* Фокус */
         .form-group input:focus,
         .form-group textarea:focus {
             border-color: #1e1e2f;

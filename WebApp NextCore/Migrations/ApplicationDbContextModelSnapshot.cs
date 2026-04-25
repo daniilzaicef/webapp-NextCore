@@ -309,6 +309,9 @@ namespace WebApp_NextCore.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Technologies")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -335,6 +338,9 @@ namespace WebApp_NextCore.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IamgePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")

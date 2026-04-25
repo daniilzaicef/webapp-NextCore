@@ -8,14 +8,14 @@ namespace WebApp_NextCore.Models
     {
         public int Id { get; set; }
     
-        [Required]
+        [Required(ErrorMessage ="Введите ФИО")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Введите Email")]
         [EmailAddress(ErrorMessage ="Некорректный Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Введите Сообщение")]
         public string Message { get; set; }
 
         public string UseId {  get; set; }

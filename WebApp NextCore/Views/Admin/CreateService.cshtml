@@ -2,7 +2,7 @@
 
 <h2>Добавить услугу</h2>
 
-<form asp-action="CreateService" method="post">
+<form asp-action="CreateService" method="post" enctype="multipart/form-data">
     <div class="card p-4 mb-4 shadow-sm">
         <div class="mb-3">
             <label>Название</label>
@@ -18,8 +18,13 @@
             <label class="form-label">Полное описание</label>
             <textarea asp-for="FullDescription" class="form-control" rows="5"></textarea>
         </div>
+
+        <div class="mb-3">
+            <label>Картинка</label>
+            <input type="file" name="image" class="form-control" />
+        </div>
     </div>
 
-    <button class="btn btn-success">Сохранить</button>
-
+    <button class="btn btn-outline-success">Сохранить</button>
+    <a asp-action="Service" class="btn btn-outline-success">Назад</a>
 </form>
